@@ -1,32 +1,42 @@
-import { useEffect, useState } from 'react'
-import { products } from '../data/products'
-import ImagePlaceholder from './ImagePlaceholder'
+import { useEffect, useState } from 'react';
+import { products } from '../data/products';
+import ImagePlaceholder from './ImagePlaceholder';
 
 const NAV_LEFT = [
   { label: 'Onde estamos', href: '#onde-estamos' },
   { label: 'Seja um concessionário', href: '#concessionario' },
-]
+];
 
 const NAV_RIGHT = [
   { label: 'Oficinas', href: '#oficinas' },
   { label: 'Pós-venda', href: '#pos-venda' },
-  { label: 'Consórcio', href: '#consorcio' },
-]
+  { label: 'Consórcio Ellev', href: '#consorcio' },
+];
 
 export default function Header() {
-  const [open, setOpen] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [heroVisible, setHeroVisible] = useState(true);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const hero = document.querySelector('.hero');
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      const heroHeight = hero ? hero.offsetHeight : window.innerHeight;
+      setHeroVisible(window.scrollY < heroHeight);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <header className={`header ${scrolled ? 'is-scrolled' : ''}`}>
+    <header
+      className={`header ${scrolled ? 'is-scrolled' : ''} ${
+        heroVisible ? '' : 'is-hidden'
+      }`}
+    >
       <div className="header__inner container">
         <nav className="header__side header__side--left">
           <div
@@ -34,12 +44,17 @@ export default function Header() {
             onMouseEnter={() => setOpen(true)}
             onMouseLeave={() => setOpen(false)}
           >
-            <button className="header__link header__link--dropdown">Produtos</button>
+            <button className="header__link header__link--dropdown">
+              Produtos
+            </button>
             {open && (
               <div className="header__mega">
                 {products.map((p) => (
                   <a key={p.id} href={`#${p.id}`} className="header__mega-item">
-                    <ImagePlaceholder label={p.name} className="header__mega-thumb" />
+                    <ImagePlaceholder
+                      label={p.name}
+                      className="header__mega-thumb"
+                    />
                     <span className="header__mega-name">{p.name}</span>
                     <span className="header__mega-sub">Veículo elétrico</span>
                   </a>
@@ -97,5 +112,5 @@ export default function Header() {
         </nav>
       </div>
     </header>
-  )
+  );
 }

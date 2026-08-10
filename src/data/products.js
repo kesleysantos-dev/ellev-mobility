@@ -4,9 +4,9 @@ export const products = [
     name: 'MODELO 01',
     tagline: 'Performance em duas rodas',
     specs: [
-      { label: 'Velocidade máxima', value: '100 km/h' },
-      { label: 'Autonomia', value: 'até 130 km' },
-      { label: '0–50 km/h', value: '2,9 s' },
+      { label: 'Vel. Máxima', value: '100km/h' },
+      { label: 'Autonomia', value: 'até 130km' },
+      { label: '0-50km/h', value: '2.9 seg' },
     ],
     cta: 'Explore o Modelo 01',
   },
@@ -15,8 +15,8 @@ export const products = [
     name: 'MODELO 02',
     tagline: 'Design vintage, tecnologia de ponta',
     specs: [
-      { label: 'Velocidade máxima', value: '100 km/h' },
-      { label: 'Autonomia', value: 'até 100 km' },
+      { label: 'Vel. Máxima', value: '100km/h' },
+      { label: 'Autonomia', value: 'até 100km' },
       { label: 'Motor', value: '9.000 W' },
     ],
     cta: 'Explore o Modelo 02',

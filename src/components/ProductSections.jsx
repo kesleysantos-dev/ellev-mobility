@@ -49,7 +49,7 @@ export default function ProductSections() {
               ))}
             </div>
 
-            <a href={`#${p.id}-detalhes`} className="btn btn--pill">
+            <a href={`#${p.id}-detalhes`} className="btn btn--primary">
               {p.cta}
             </a>
           </Reveal>

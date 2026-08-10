@@ -1,4 +1,5 @@
 import Header from './components/Header'
+import WhatsAppButton from './components/WhatsAppButton'
 import Hero from './components/Hero'
 import ProductSections from './components/ProductSections'
 import WhereToBuy from './components/WhereToBuy'
@@ -26,6 +27,7 @@ export default function App() {
         <SocialSection />
       </main>
       <Footer />
+      <WhatsAppButton />
     </>
   )
 }
