@@ -550,6 +550,7 @@ section h2 {
 
 /* ============ Photo cards (Onde comprar / Oficinas) ============ */
 .where-to-buy {
+  background: var(--bg-soft);
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -558,13 +559,13 @@ section h2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
-  padding-bottom: 100px;
+  padding-bottom: 24px;
 }
 
 .photo-card {
   position: relative;
   display: block;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 3;
   border-radius: var(--radius);
   overflow: hidden;
   background: repeating-linear-gradient(
@@ -574,6 +575,14 @@ section h2 {
     #2a2d33 14px,
     #2a2d33 28px
   );
+}
+
+.photo-card__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .photo-card__placeholder-label {
@@ -623,12 +632,15 @@ section h2 {
   display: block;
   width: 32px;
   height: 2px;
-  background: var(--accent-teal);
+  background: #fff;
   margin-bottom: 14px;
 }
 
 .photo-card__title {
-  font-size: 1.7rem;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 2.4rem;
+  line-height: 1.1;
   white-space: pre-line;
   margin-bottom: 14px;
   color: #fff;
@@ -638,8 +650,8 @@ section h2 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.82rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 700;
   color: rgba(255, 255, 255, 0.85);
   transition: gap 0.2s ease;
 }
@@ -665,6 +677,18 @@ section h2 {
   align-items: flex-end;
 }
 
+.photo-panel__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.battery .photo-panel {
+  min-height: 100vh;
+}
+
 .photo-panel__overlay {
   position: absolute;
   inset: 0;
@@ -677,7 +701,7 @@ section h2 {
 
 .photo-panel__content {
   position: relative;
-  padding: 56px;
+  padding: 0 56px 36px;
   max-width: 640px;
   color: var(--text-on-dark);
 }
@@ -692,15 +716,24 @@ section h2 {
 }
 
 .photo-panel__title {
+  font-family: var(--font-body);
+  font-weight: 800;
   color: #fff;
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  line-height: 1.05;
   margin-bottom: 16px;
 }
 
 .photo-panel__text {
   color: var(--text-on-dark-muted);
-  font-size: 1rem;
+  font-size: 1.05rem;
+  font-weight: 500;
   max-width: 480px;
+}
+
+.battery {
+  background: var(--bg-soft);
+  padding-top: 24px;
 }
 
 .battery .container,
