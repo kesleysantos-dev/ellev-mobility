@@ -1,22 +1,49 @@
+import { useEffect, useRef, useState } from 'react'
 import { products } from '../data/products'
 import Reveal from './Reveal'
 
-function ProductSilhouette({ name }) {
+const MAX_OFFSET = 140
+
+function ProductPhoto({ name, src, reverse = false }) {
+  const ref = useRef(null)
+  const startOffset = reverse ? -MAX_OFFSET : MAX_OFFSET
+  const [offset, setOffset] = useState(startOffset)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    let ticking = false
+    const update = () => {
+      const rect = el.getBoundingClientRect()
+      const vh = window.innerHeight
+      const progress = Math.min(Math.max(1 - rect.top / vh, 0), 1)
+      setOffset((1 - progress) * startOffset)
+      ticking = false
+    }
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true
+        requestAnimationFrame(update)
+      }
+    }
+
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [])
+
   return (
-    <div className="product-section__image">
-      <svg viewBox="0 0 240 120" className="product-section__silhouette" aria-hidden="true">
-        <circle cx="52" cy="92" r="20" fill="none" stroke="currentColor" strokeWidth="3" />
-        <circle cx="180" cy="92" r="20" fill="none" stroke="currentColor" strokeWidth="3" />
-        <path
-          d="M52 92 L92 44 H144 L180 92 M92 44 L106 68 H160"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-      <span className="product-section__image-label">Foto — {name} (substituir)</span>
+    <div
+      ref={ref}
+      className="product-section__image"
+      style={{ transform: `translateX(${offset}px)` }}
+    >
+      <img src={src} alt={name} className="product-section__photo" />
     </div>
   )
 }
@@ -34,7 +61,7 @@ export default function ProductSections() {
             {p.name.replace('MODELO ', '')}
           </span>
 
-          <ProductSilhouette name={p.name} />
+          <ProductPhoto name={p.name} src={p.photo} reverse={p.id === 'modelo-03'} />
 
           <Reveal as="div" className="product-section__copy">
             <span className="product-section__label">{p.name}</span>

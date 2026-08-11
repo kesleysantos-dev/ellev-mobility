@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { products } from '../data/products';
-import ImagePlaceholder from './ImagePlaceholder';
 
 const NAV_LEFT = [
   { label: 'Onde estamos', href: '#onde-estamos' },
@@ -14,17 +13,29 @@ const NAV_RIGHT = [
 ];
 
 export default function Header() {
+  const headerRef = useRef(null);
+  const closeTimer = useRef(null);
   const [open, setOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [heroVisible, setHeroVisible] = useState(true);
+
+  const openDropdown = () => {
+    clearTimeout(closeTimer.current);
+    setOpen(true);
+  };
+  const closeDropdown = () => {
+    closeTimer.current = setTimeout(() => setOpen(false), 150);
+  };
 
   useEffect(() => {
     const hero = document.querySelector('.hero');
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
       const heroHeight = hero ? hero.offsetHeight : window.innerHeight;
-      setHeroVisible(window.scrollY < heroHeight);
+      const headerHeight = headerRef.current ? headerRef.current.offsetHeight : 0;
+      const leadBuffer = 40;
+      setHeroVisible(window.scrollY < heroHeight - headerHeight - leadBuffer);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -33,6 +44,7 @@ export default function Header() {
 
   return (
     <header
+      ref={headerRef}
       className={`header ${scrolled ? 'is-scrolled' : ''} ${
         heroVisible ? '' : 'is-hidden'
       }`}
@@ -41,18 +53,23 @@ export default function Header() {
         <nav className="header__side header__side--left">
           <div
             className="header__dropdown"
-            onMouseEnter={() => setOpen(true)}
-            onMouseLeave={() => setOpen(false)}
+            onMouseEnter={openDropdown}
+            onMouseLeave={closeDropdown}
           >
             <button className="header__link header__link--dropdown">
               Produtos
             </button>
             {open && (
-              <div className="header__mega">
+              <div
+                className="header__mega"
+                onMouseEnter={openDropdown}
+                onMouseLeave={closeDropdown}
+              >
                 {products.map((p) => (
                   <a key={p.id} href={`#${p.id}`} className="header__mega-item">
-                    <ImagePlaceholder
-                      label={p.name}
+                    <img
+                      src={p.photo}
+                      alt={p.name}
                       className="header__mega-thumb"
                     />
                     <span className="header__mega-name">{p.name}</span>
