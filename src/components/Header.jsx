@@ -18,7 +18,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [heroVisible, setHeroVisible] = useState(true);
+  const [headerVisible, setHeaderVisible] = useState(true);
 
   const openDropdown = () => {
     clearTimeout(closeTimer.current);
@@ -29,13 +29,26 @@ export default function Header() {
   };
 
   useEffect(() => {
-    const hero = document.querySelector('.hero');
+    let lastScrollY = window.scrollY;
+    const threshold = 20;
+
     const onScroll = () => {
-      setScrolled(window.scrollY > 40);
-      const heroHeight = hero ? hero.offsetHeight : window.innerHeight;
-      const headerHeight = headerRef.current ? headerRef.current.offsetHeight : 0;
-      const leadBuffer = 40;
-      setHeroVisible(window.scrollY < heroHeight - headerHeight - leadBuffer);
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 40);
+
+      if (currentScrollY <= 40) {
+        setHeaderVisible(true);
+        lastScrollY = currentScrollY;
+        return;
+      }
+
+      if (currentScrollY > lastScrollY + threshold) {
+        setHeaderVisible(false);
+        lastScrollY = currentScrollY;
+      } else if (currentScrollY < lastScrollY - threshold) {
+        setHeaderVisible(true);
+        lastScrollY = currentScrollY;
+      }
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -46,7 +59,7 @@ export default function Header() {
     <header
       ref={headerRef}
       className={`header ${scrolled ? 'is-scrolled' : ''} ${
-        heroVisible ? '' : 'is-hidden'
+        headerVisible ? '' : 'is-hidden'
       }`}
     >
       <div className="header__inner container">
