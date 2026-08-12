@@ -1,7 +1,7 @@
 import Reveal from './Reveal'
-import controllerPhoto from '../assets/c1.png'
-import batteriesPhoto from '../assets/c2.png'
-import motorPhoto from '../assets/c3.png'
+import controllerPhoto from '../assets/engenharia/c1.png'
+import batteriesPhoto from '../assets/engenharia/c2.png'
+import motorPhoto from '../assets/engenharia/c3.png'
 
 const CARDS = [
   {

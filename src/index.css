@@ -744,6 +744,23 @@ section h2 {
 
 .brand-statement {
   background: var(--bg-soft);
+  padding-top: 24px;
+}
+
+.brand-statement .photo-panel {
+  min-height: 100vh;
+}
+
+.brand-statement .photo-panel__content {
+  max-width: 880px;
+}
+
+.brand-statement .photo-panel__title {
+  -webkit-text-stroke: 0.6px currentColor;
+}
+
+.brand-statement .photo-panel__text {
+  max-width: 620px;
 }
 
 /* ============ Savings calculator ============ */
@@ -1151,6 +1168,7 @@ section h2 {
 /* ============ Engineering ============ */
 .engineering {
   background: var(--bg-soft);
+  padding-bottom: 40px;
 }
 
 .engineering__panel {
