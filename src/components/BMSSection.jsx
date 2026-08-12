@@ -1,5 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useRef } from 'react'
 import Reveal from './Reveal'
+
+// Troque por: import bmsVideo from '../assets/bms-demo.mp4'
+const BMS_VIDEO_SRC = null
 
 const FEATURES = [
   {
@@ -28,36 +31,92 @@ const FEATURES = [
   },
 ]
 
+// Distância fixa do topo onde os cards (esquerda) e a mídia (direita)
+// grudam — as duas colunas usam o mesmo valor para fixar na mesma altura.
+const STICKY_TOP = 60
+
 export default function BMSSection() {
-  const [active, setActive] = useState(0)
+  const listRef = useRef(null)
+  const mediaWrapRef = useRef(null)
+  const mediaRef = useRef(null)
+
+  useEffect(() => {
+    const list = listRef.current
+    const wrap = mediaWrapRef.current
+    const media = mediaRef.current
+    if (!list || !wrap || !media) return
+
+    const computeLayout = () => {
+      // Altura explícita: dentro de um grid, a caixa de contenção do
+      // sticky é resolvida a partir do tamanho intrínseco (auto), o que
+      // trava a posição dos cards do meio. Fixar a altura remove essa
+      // ambiguidade (mesmo problema encontrado antes nesta section).
+      const children = Array.from(list.children)
+      let listTotal = 0
+      children.forEach((item, i) => {
+        listTotal += item.offsetHeight
+        // A margem do último card não conta — o fim da lista deve ser
+        // exatamente o fundo dele, sem sobra.
+        if (i < children.length - 1) {
+          listTotal += parseFloat(getComputedStyle(item).marginBottom) || 0
+        }
+      })
+
+      // A mídia precisa do trilho suficiente para nunca precisar encolher
+      // (STICKY_TOP + a própria altura dela). As duas colunas usam a
+      // maior das duas alturas, para terminar juntas no mesmo ponto —
+      // depois disso a section inteira sobe normalmente.
+      const mediaTotal = STICKY_TOP + media.offsetHeight
+      const total = Math.max(listTotal, mediaTotal)
+
+      list.style.height = `${total}px`
+      wrap.style.height = `${total}px`
+    }
+
+    computeLayout()
+    document.fonts?.ready?.then(computeLayout)
+    window.addEventListener('resize', computeLayout)
+    return () => window.removeEventListener('resize', computeLayout)
+  }, [])
 
   return (
     <section className="bms">
       <div className="container">
-        <Reveal as="h2">Tecnologia de BMS</Reveal>
+        <Reveal as="h2">Tecnologia Ellev de BMS</Reveal>
+        <Reveal as="span" className="bms__eyebrow" delay={80}>
+          Bateria inteligente
+        </Reveal>
 
         <div className="bms__grid">
-          <div className="bms__list">
+          <div className="bms__list" ref={listRef}>
             {FEATURES.map((f, i) => (
-              <button
-                key={f.title}
-                className={`bms__item ${active === i ? 'is-active' : ''}`}
-                onClick={() => setActive(i)}
-              >
+              <div key={f.title} className="bms__item" style={{ zIndex: i + 1 }}>
                 <h3 className="bms__item-title">
                   {String(i + 1).padStart(2, '0')}. {f.title}
                 </h3>
                 <p className="bms__item-text">{f.text}</p>
-              </button>
+              </div>
             ))}
           </div>
 
-          <Reveal as="div" className="bms__media" delay={150}>
-            {/* Substitua por <video autoPlay muted loop playsInline> quando o arquivo chegar */}
-            <div className="bms__video-placeholder">
-              <span>VÍDEO — animação técnica (substituir)</span>
+          <div className="bms__media-wrap" ref={mediaWrapRef}>
+            <div className="bms__media" ref={mediaRef}>
+              {BMS_VIDEO_SRC ? (
+                <video
+                  className="bms__video"
+                  src={BMS_VIDEO_SRC}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
+              ) : (
+                <div className="bms__video-placeholder">
+                  <span>VÍDEO — animação técnica (substituir)</span>
+                </div>
+              )}
             </div>
-          </Reveal>
+          </div>
         </div>
       </div>
     </section>
