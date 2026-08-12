@@ -32,7 +32,7 @@ export default function EngineeringSection() {
           <div className="engineering__intro">
             <div>
               <Reveal as="h2">Engenharia</Reveal>
-              <span className="engineering__logo">SUA MARCA</span>
+              <span className="engineering__logo">Ellev Mobility</span>
             </div>
             <Reveal as="p" delay={80}>
               Desenvolvemos e testamos cada componente com precisão e cuidado. Da controladora ao

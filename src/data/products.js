@@ -1,11 +1,11 @@
-import modelo01 from '../assets/products/modelo-01.png'
-import modelo02 from '../assets/products/modelo-02.png'
-import modelo03 from '../assets/products/modelo-03.png'
+import modelo01 from '../assets/products/modelo-01.png';
+import modelo02 from '../assets/products/modelo-02.png';
+import modelo03 from '../assets/products/modelo-03.png';
 
 export const products = [
   {
     id: 'modelo-01',
-    name: 'MODELO 01',
+    name: 'EG1',
     tagline: 'Performance em duas rodas',
     photo: modelo01,
     specs: [
@@ -13,23 +13,23 @@ export const products = [
       { label: 'Autonomia', value: 'até 130km' },
       { label: '0-50km/h', value: '2.9 seg' },
     ],
-    cta: 'Explore o Modelo 01',
+    cta: 'Explore a EG1',
   },
   {
     id: 'modelo-03',
-    name: 'MODELO 02',
+    name: 'ES1',
     tagline: 'Liberdade para o dia a dia',
     photo: modelo03,
     specs: [
       { label: 'Bateria', value: 'Íon-Lítio' },
       { label: 'Autonomia', value: 'até 60 km' },
-      { label: 'Documentação', value: 'sem CNH nem placa' },
+      { label: 'Documentação', value: 'sem CNH/Emplacamento' },
     ],
-    cta: 'Explore o Modelo 02',
+    cta: 'Explore a ES1',
   },
   {
     id: 'modelo-02',
-    name: 'MODELO 03',
+    name: 'VIBE',
     tagline: 'Design vintage, tecnologia de ponta',
     photo: modelo02,
     specs: [
@@ -37,6 +37,6 @@ export const products = [
       { label: 'Autonomia', value: 'até 100km' },
       { label: 'Motor', value: '9.000 W' },
     ],
-    cta: 'Explore o Modelo 03',
+    cta: 'Explore a VIBE',
   },
-]
+];

@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react'
 import Reveal from './Reveal'
+import bmsChipPhoto from '../assets/BMS/chipe BMS.png'
 
-// Troque por: import bmsVideo from '../assets/bms-demo.mp4'
+// Troque por: import bmsVideo from '../assets/bms-demo.mp4' quando o vídeo chegar
 const BMS_VIDEO_SRC = null
 
 const FEATURES = [
@@ -111,9 +112,7 @@ export default function BMSSection() {
                   playsInline
                 />
               ) : (
-                <div className="bms__video-placeholder">
-                  <span>VÍDEO — animação técnica (substituir)</span>
-                </div>
+                <img src={bmsChipPhoto} alt="Chip do BMS" className="bms__video" />
               )}
             </div>
           </div>

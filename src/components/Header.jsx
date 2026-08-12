@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { products } from '../data/products';
 
 const NAV_LEFT = [
@@ -19,6 +19,25 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [headerVisible, setHeaderVisible] = useState(true);
+  const logoTopRef = useRef(null);
+  const logoBottomRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const scaleLogo = () => {
+      const top = logoTopRef.current;
+      const bottom = logoBottomRef.current;
+      if (!top || !bottom) return;
+      top.style.transform = 'scaleX(1)';
+      const topWidth = top.getBoundingClientRect().width;
+      const bottomWidth = bottom.getBoundingClientRect().width;
+      if (topWidth > 0) {
+        top.style.transform = `scaleX(${bottomWidth / topWidth})`;
+      }
+    };
+    scaleLogo();
+    window.addEventListener('resize', scaleLogo);
+    return () => window.removeEventListener('resize', scaleLogo);
+  }, []);
 
   const openDropdown = () => {
     clearTimeout(closeTimer.current);
@@ -86,7 +105,7 @@ export default function Header() {
                       className="header__mega-thumb"
                     />
                     <span className="header__mega-name">{p.name}</span>
-                    <span className="header__mega-sub">Veículo elétrico</span>
+                    <span className="header__mega-sub">Moto elétrica</span>
                   </a>
                 ))}
               </div>
@@ -100,7 +119,12 @@ export default function Header() {
         </nav>
 
         <a href="#top" className="header__logo">
-          SUA MARCA
+          <span ref={logoTopRef} className="header__logo-top">
+            ELLEV
+          </span>
+          <span ref={logoBottomRef} className="header__logo-bottom">
+            MOBILITY
+          </span>
         </a>
 
         <nav className="header__side header__side--right">
