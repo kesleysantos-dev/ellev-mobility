@@ -8,9 +8,9 @@ export default function EG1ElectricBanner() {
       <img src={bannerPhoto} alt="Ellev EG1 rodando à noite" className="eg1-electric__img" />
       <div className="eg1-electric__overlay" />
 
-      <Reveal as="div" className="eg1-electric__content">
+      <Reveal as="div" className="eg1-electric__content" delay={300}>
         <h2>100% elétrica</h2>
-        <p>Carrega em tomadas comuns de 127V ou 220V.</p>
+        <p>Carrega em tomadas<br />comuns de 127V ou 220V.</p>
         <p>Carregamento Rápido T2</p>
         <ArrowLink href="/#onde-estamos" light>
           Onde comprar
