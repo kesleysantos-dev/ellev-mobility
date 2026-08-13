@@ -21,6 +21,7 @@ export const products = [
     name: 'ES1',
     tagline: 'Liberdade para o dia a dia',
     photo: modelo03,
+    link: '/es1',
     specs: [
       { label: 'Bateria', value: 'Íon-Lítio' },
       { label: 'Autonomia', value: 'até 60 km' },
