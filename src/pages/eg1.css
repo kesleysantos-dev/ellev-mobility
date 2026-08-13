@@ -296,6 +296,7 @@
 
 .eg1-features__track-wrap {
   position: relative;
+  width: 100%;
 }
 
 .eg1-features__track {
@@ -303,7 +304,9 @@
   gap: 14px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-padding-left: max(32px, calc((100vw - var(--container-w)) / 2));
   padding-bottom: 8px;
+  padding-left: max(32px, calc((100vw - var(--container-w)) / 2));
   scrollbar-width: none;
 }
 
@@ -313,13 +316,17 @@
 
 .eg1-features__card {
   position: relative;
-  flex: 0 0 clamp(240px, 26vw, 340px);
-  aspect-ratio: 3 / 4;
+  flex: 0 0 clamp(260px, 25vw, 360px);
+  aspect-ratio: 2 / 3;
   border-radius: 10px;
   overflow: hidden;
   scroll-snap-align: start;
   background-size: cover;
   background-position: center;
+}
+
+.eg1-features__card:last-child {
+  margin-right: max(32px, calc((100vw - var(--container-w)) / 2));
 }
 
 .eg1-features__card::after {
@@ -348,22 +355,33 @@
 .eg1-features__arrow {
   position: absolute;
   top: 40%;
-  right: -8px;
   transform: translateY(-50%);
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: none;
-  background: rgba(29, 29, 29, 0.08);
+  background: #fff;
   color: var(--text);
+  box-shadow: 0 6px 20px rgba(29, 29, 29, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  z-index: 1;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.eg1-features__arrow--prev {
+  left: 12px;
+}
+
+.eg1-features__arrow--next {
+  right: 12px;
 }
 
 .eg1-features__arrow:hover {
-  background: rgba(29, 29, 29, 0.16);
+  box-shadow: 0 8px 24px rgba(29, 29, 29, 0.35);
+  transform: translateY(-50%) scale(1.06);
 }
 
 .eg1-features__dots {
