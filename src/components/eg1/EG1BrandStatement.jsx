@@ -1,0 +1,28 @@
+import Reveal from '../Reveal'
+
+export default function EG1BrandStatement() {
+  return (
+    <section className="eg1-brand">
+      <div className="container">
+        <Reveal as="div" className="eg1-brand__inner">
+          <h2>Montada no Brasil, pensada para você</h2>
+          <p>
+            Na ELLEV, acreditamos que <strong>performance, design e tecnologia de ponta</strong> só
+            fazem sentido quando estão ao seu alcance com <strong>confiança e suporte de verdade.</strong>
+          </p>
+          <p>
+            Por isso, nossas motos são <strong>montadas no Brasil,</strong> com garantia nacional e{' '}
+            <strong>peças de reposição sempre à pronta entrega.</strong>
+          </p>
+          <p>
+            Esse é o nosso compromisso: entregar mobilidade elétrica que une{' '}
+            <strong>inovação e tranquilidade para o seu dia a dia.</strong>
+          </p>
+          <a href="/#onde-estamos" className="btn btn--primary">
+            Onde comprar
+          </a>
+        </Reveal>
+      </div>
+    </section>
+  )
+}

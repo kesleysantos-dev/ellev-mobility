@@ -1,30 +1,19 @@
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import WhatsAppButton from './components/WhatsAppButton'
-import Hero from './components/Hero'
-import ProductSections from './components/ProductSections'
-import WhereToBuy from './components/WhereToBuy'
-import BatterySection from './components/BatterySection'
-import SavingsCalculator from './components/SavingsCalculator'
-import BMSSection from './components/BMSSection'
-import EngineeringSection from './components/EngineeringSection'
-import BrandStatement from './components/BrandStatement'
-import SocialSection from './components/SocialSection'
 import Footer from './components/Footer'
+import Home from './pages/Home'
+import EG1Page from './pages/EG1Page'
 
 export default function App() {
   return (
     <>
       <Header />
       <main>
-        <Hero />
-        <ProductSections />
-        <WhereToBuy />
-        <BatterySection />
-        <SavingsCalculator />
-        <BMSSection />
-        <EngineeringSection />
-        <BrandStatement />
-        <SocialSection />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/eg1" element={<EG1Page />} />
+        </Routes>
       </main>
       <Footer />
       <WhatsAppButton />

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { products } from '../data/products'
 import Reveal from './Reveal'
 
@@ -61,10 +62,22 @@ export default function ProductSections() {
             {p.name.replace('MODELO ', '')}
           </span>
 
-          <ProductPhoto name={p.name} src={p.photo} reverse={p.id === 'modelo-03'} />
+          {p.link ? (
+            <Link to={p.link} className="product-section__image-link" aria-label={`Ver página da ${p.name}`}>
+              <ProductPhoto name={p.name} src={p.photo} reverse={p.id === 'modelo-03'} />
+            </Link>
+          ) : (
+            <ProductPhoto name={p.name} src={p.photo} reverse={p.id === 'modelo-03'} />
+          )}
 
           <Reveal as="div" className="product-section__copy">
-            <span className="product-section__label">{p.name}</span>
+            {p.link ? (
+              <Link to={p.link} className="product-section__label">
+                {p.name}
+              </Link>
+            ) : (
+              <span className="product-section__label">{p.name}</span>
+            )}
             <h1 className="product-section__title">{p.tagline}</h1>
 
             <div className="product-section__specs">
@@ -76,9 +89,15 @@ export default function ProductSections() {
               ))}
             </div>
 
-            <a href={`#${p.id}-detalhes`} className="btn btn--primary">
-              {p.cta}
-            </a>
+            {p.link ? (
+              <Link to={p.link} className="btn btn--primary">
+                {p.cta}
+              </Link>
+            ) : (
+              <a href={`#${p.id}-detalhes`} className="btn btn--primary">
+                {p.cta}
+              </a>
+            )}
           </Reveal>
         </section>
       ))}

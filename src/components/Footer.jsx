@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { products } from '../data/products'
 
 export default function Footer() {
@@ -27,31 +28,37 @@ export default function Footer() {
       <div className="container footer__grid">
         <div className="footer__col">
           <span className="footer__heading">Marca</span>
-          <a href="#top" className="footer__logo">
+          <Link to="/" className="footer__logo">
             <span ref={logoTopRef} className="footer__logo-top">
               ELLEV
             </span>
             <span ref={logoBottomRef} className="footer__logo-bottom">
               MOBILITY
             </span>
-          </a>
+          </Link>
         </div>
 
         <div className="footer__col">
           <span className="footer__heading">Produtos</span>
-          {products.map((p) => (
-            <a key={p.id} href={`#${p.id}`}>
-              {p.name}
-            </a>
-          ))}
+          {products.map((p) =>
+            p.link ? (
+              <Link key={p.id} to={p.link}>
+                {p.name}
+              </Link>
+            ) : (
+              <a key={p.id} href={`/#${p.id}`}>
+                {p.name}
+              </a>
+            )
+          )}
         </div>
 
         <div className="footer__col">
           <span className="footer__heading">Institucional</span>
-          <a href="#onde-estamos">Concessionárias</a>
-          <a href="#consorcio">Consórcio</a>
-          <a href="#oficinas">Assistência</a>
-          <a href="#pos-venda">Pós-vendas</a>
+          <a href="/#onde-estamos">Concessionárias</a>
+          <a href="/#consorcio">Consórcio</a>
+          <a href="/#oficinas">Assistência</a>
+          <a href="/#pos-venda">Pós-vendas</a>
         </div>
 
         <div className="footer__col">

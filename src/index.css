@@ -492,6 +492,10 @@ section h2 {
   will-change: transform;
 }
 
+.product-section__image-link {
+  display: block;
+}
+
 .product-section__photo {
   display: block;
   width: 100%;
@@ -507,9 +511,15 @@ section h2 {
 }
 
 .product-section__label {
+  display: inline-block;
   font-size: 2rem;
   color: var(--text-muted);
   margin-bottom: 4px;
+  text-decoration: none;
+}
+
+a.product-section__label:hover {
+  color: var(--text);
 }
 
 .product-section__title {

@@ -1,15 +1,16 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { products } from '../data/products';
 
 const NAV_LEFT = [
-  { label: 'Onde estamos', href: '#onde-estamos' },
-  { label: 'Seja um concessionário', href: '#concessionario' },
+  { label: 'Onde estamos', href: '/#onde-estamos' },
+  { label: 'Seja um concessionário', href: '/#concessionario' },
 ];
 
 const NAV_RIGHT = [
-  { label: 'Oficinas', href: '#oficinas' },
-  { label: 'Pós-venda', href: '#pos-venda' },
-  { label: 'Consórcio Ellev', href: '#consorcio' },
+  { label: 'Oficinas', href: '/#oficinas' },
+  { label: 'Pós-venda', href: '/#pos-venda' },
+  { label: 'Consórcio Ellev', href: '/#consorcio' },
 ];
 
 export default function Header() {
@@ -97,17 +98,45 @@ export default function Header() {
                 onMouseEnter={openDropdown}
                 onMouseLeave={closeDropdown}
               >
-                {products.map((p) => (
-                  <a key={p.id} href={`#${p.id}`} className="header__mega-item">
-                    <img
-                      src={p.photo}
-                      alt={p.name}
-                      className="header__mega-thumb"
-                    />
-                    <span className="header__mega-name">{p.name}</span>
-                    <span className="header__mega-sub">Moto elétrica</span>
-                  </a>
-                ))}
+                {products.map((p) =>
+                  p.link ? (
+                    <Link
+                      key={p.id}
+                      to={p.link}
+                      className="header__mega-item"
+                      onClick={() => {
+                        clearTimeout(closeTimer.current)
+                        setOpen(false)
+                      }}
+                    >
+                      <img
+                        src={p.photo}
+                        alt={p.name}
+                        className="header__mega-thumb"
+                      />
+                      <span className="header__mega-name">{p.name}</span>
+                      <span className="header__mega-sub">Moto elétrica</span>
+                    </Link>
+                  ) : (
+                    <a
+                      key={p.id}
+                      href={`/#${p.id}`}
+                      className="header__mega-item"
+                      onClick={() => {
+                        clearTimeout(closeTimer.current)
+                        setOpen(false)
+                      }}
+                    >
+                      <img
+                        src={p.photo}
+                        alt={p.name}
+                        className="header__mega-thumb"
+                      />
+                      <span className="header__mega-name">{p.name}</span>
+                      <span className="header__mega-sub">Moto elétrica</span>
+                    </a>
+                  )
+                )}
               </div>
             )}
           </div>
@@ -118,14 +147,14 @@ export default function Header() {
           ))}
         </nav>
 
-        <a href="#top" className="header__logo">
+        <Link to="/" className="header__logo">
           <span ref={logoTopRef} className="header__logo-top">
             ELLEV
           </span>
           <span ref={logoBottomRef} className="header__logo-bottom">
             MOBILITY
           </span>
-        </a>
+        </Link>
 
         <nav className="header__side header__side--right">
           {NAV_RIGHT.map((link) => (
@@ -133,7 +162,7 @@ export default function Header() {
               {link.label}
             </a>
           ))}
-          <a href="#comprar" className="header__link">
+          <a href="/#comprar" className="header__link">
             Comprar
           </a>
         </nav>
@@ -150,17 +179,33 @@ export default function Header() {
 
         <nav className={`header__mobile-nav ${menuOpen ? 'is-open' : ''}`}>
           <span className="header__mobile-heading">Produtos</span>
-          {products.map((p) => (
-            <a key={p.id} href={`#${p.id}`} className="header__mobile-link">
-              {p.name}
-            </a>
-          ))}
+          {products.map((p) =>
+            p.link ? (
+              <Link
+                key={p.id}
+                to={p.link}
+                className="header__mobile-link"
+                onClick={() => setMenuOpen(false)}
+              >
+                {p.name}
+              </Link>
+            ) : (
+              <a
+                key={p.id}
+                href={`/#${p.id}`}
+                className="header__mobile-link"
+                onClick={() => setMenuOpen(false)}
+              >
+                {p.name}
+              </a>
+            )
+          )}
           {[...NAV_LEFT, ...NAV_RIGHT].map((link) => (
             <a key={link.href} href={link.href} className="header__mobile-link">
               {link.label}
             </a>
           ))}
-          <a href="#comprar" className="btn btn--primary">
+          <a href="/#comprar" className="btn btn--primary">
             Comprar
           </a>
         </nav>

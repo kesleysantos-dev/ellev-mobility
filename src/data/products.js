@@ -8,6 +8,7 @@ export const products = [
     name: 'EG1',
     tagline: 'Performance em duas rodas',
     photo: modelo01,
+    link: '/eg1',
     specs: [
       { label: 'Vel. Máxima', value: '100km/h' },
       { label: 'Autonomia', value: 'até 130km' },
