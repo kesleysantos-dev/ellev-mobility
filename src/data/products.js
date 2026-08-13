@@ -34,6 +34,7 @@ export const products = [
     name: 'VIBE',
     tagline: 'Design vintage, tecnologia de ponta',
     photo: modelo02,
+    link: '/vibe',
     specs: [
       { label: 'Vel. Máxima', value: '100km/h' },
       { label: 'Autonomia', value: 'até 100km' },
