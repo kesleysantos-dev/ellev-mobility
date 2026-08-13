@@ -30,6 +30,7 @@ const SPECS = [
 export default function EG1Explorer() {
   const [colorIndex, setColorIndex] = useState(0)
   const [frameIndex, setFrameIndex] = useState(0)
+  const [isDragging, setIsDragging] = useState(false)
   const dragRef = useRef(null)
 
   const color = COLORS[colorIndex]
@@ -46,6 +47,7 @@ export default function EG1Explorer() {
 
   const onPointerDown = (e) => {
     dragRef.current = { startX: e.clientX, startIndex: frameIndex }
+    setIsDragging(true)
     e.currentTarget.setPointerCapture(e.pointerId)
   }
 
@@ -61,6 +63,7 @@ export default function EG1Explorer() {
 
   const onPointerUp = () => {
     dragRef.current = null
+    setIsDragging(false)
   }
 
   return (
@@ -100,7 +103,9 @@ export default function EG1Explorer() {
             />
             <div className="eg1-explorer__hint">
               <span className="eg1-explorer__hint-badge">360°</span>
-              <span>arraste para girar</span>
+              <span className={`eg1-explorer__hint-label ${isDragging ? 'is-hidden' : ''}`}>
+                arraste para girar
+              </span>
             </div>
           </div>
 
