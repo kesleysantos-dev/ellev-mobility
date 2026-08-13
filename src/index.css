@@ -1554,6 +1554,12 @@ a.product-section__label:hover {
   color: #fff;
 }
 
+.footer__whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .footer__bottom {
   display: flex;
   justify-content: center;
