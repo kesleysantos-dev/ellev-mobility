@@ -17,7 +17,7 @@ export default function EG1WhereToBuy() {
               acompanhamento do desempenho do veículo.
             </p>
             <ArrowLink href="/#onde-estamos" light>
-              Conheça nossa revendas
+              Conheça nossas revendas
             </ArrowLink>
           </div>
         </Reveal>

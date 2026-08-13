@@ -1,27 +1,32 @@
-import Reveal from '../Reveal'
-import dealershipPhoto from '../../assets/es1/misc/dealership.webp'
-import ArrowLink from '../eg1/ArrowLink'
+import Reveal from '../Reveal';
+import dealershipPhoto from '../../assets/es1/misc/dealership.webp';
+import ArrowLink from '../eg1/ArrowLink';
 
 export default function ES1WhereToBuy() {
   return (
     <section className="es1-wtb">
       <div className="container">
         <Reveal as="div" className="es1-wtb__card">
-          <img src={dealershipPhoto} alt="Loja Ellev" className="es1-wtb__img" />
+          <img
+            src={dealershipPhoto}
+            alt="Loja Ellev"
+            className="es1-wtb__img"
+          />
           <div className="es1-wtb__overlay" />
           <div className="es1-wtb__content">
             <h1>Onde comprar</h1>
             <p>
-              A tecnologia também nos permite criar conexões mais fortes com nossos clientes,
-              através de aplicativos que facilitam desde o agendamento de manutenções até o
-              acompanhamento do desempenho do veículo.
+              A tecnologia também nos permite criar conexões mais fortes com
+              nossos clientes, através de aplicativos que facilitam desde o
+              agendamento de manutenções até o acompanhamento do desempenho do
+              veículo.
             </p>
             <ArrowLink href="/#onde-estamos" light>
-              Conheça nossa revendas
+              Conheça nossas revendas
             </ArrowLink>
           </div>
         </Reveal>
       </div>
     </section>
-  )
+  );
 }
