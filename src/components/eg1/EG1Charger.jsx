@@ -13,13 +13,13 @@ export default function EG1Charger() {
               tecnologia de ponta, ele garante recargas muito mais ágeis e seguras — ideal para o
               dia a dia urbano ou longas jornadas de uso intenso.
             </p>
-            <p>
+            <p className="eg1-charger__spec">
               <strong>Potência de carregamento:</strong> 2 KWh
             </p>
-            <p>
+            <p className="eg1-charger__spec">
               <strong>Tempo de recarga completa:</strong> cerca de 1h40min
             </p>
-            <p>
+            <p className="eg1-charger__spec">
               <strong>Acessório opcional</strong>, disponível para o modelo EG1
             </p>
             <p>Mais energia em menos tempo — para você continuar rodando, sem interrupções. ⚡</p>
