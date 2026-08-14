@@ -6,7 +6,7 @@ export default function PosVendaRevisao() {
     <section className="pv-split pv-split--reverse">
       <div className="container">
         <Reveal as="div" className="pv-split__card">
-          <div className="pv-split__text">
+          <Reveal as="div" className="pv-split__text" delay={300}>
             <h2>Revisão Preço Fixo</h2>
             <p>Na ELLEV, o pós-venda é simples e sem surpresas.</p>
             <p>
@@ -25,7 +25,7 @@ export default function PosVendaRevisao() {
                 Baixar tabela ES1
               </a>
             </div>
-          </div>
+          </Reveal>
           <img src={photo} alt="" className="pv-split__img" />
         </Reveal>
       </div>

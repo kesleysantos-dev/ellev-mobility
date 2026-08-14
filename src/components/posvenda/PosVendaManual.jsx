@@ -7,7 +7,7 @@ export default function PosVendaManual() {
       <div className="container">
         <Reveal as="div" className="pv-split__card">
           <img src={photo} alt="" className="pv-split__img" />
-          <div className="pv-split__text">
+          <Reveal as="div" className="pv-split__text" delay={300}>
             <h2>Manual do usuário</h2>
             <p>
               Tenha sempre à mão todas as informações sobre sua moto elétrica ELLEV.
@@ -25,7 +25,7 @@ export default function PosVendaManual() {
                 Manual ES1
               </a>
             </div>
-          </div>
+          </Reveal>
         </Reveal>
       </div>
     </section>

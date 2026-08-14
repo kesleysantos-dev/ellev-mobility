@@ -34,26 +34,52 @@
 .pv-hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.89) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.89) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 
 .pv-hero__title {
   position: relative;
   z-index: 1;
-  font-size: 35px;
+  font-size: 38px;
   color: #fff;
   margin: 0;
+}
+
+/* Precisa vencer a especificidade de `.pv-page h1` (que fixa Jost 400
+   em todos os h1/h2 da página). */
+.pv-page .pv-hero__title {
+  font-family: 'Montserrat', var(--font-display), sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+/* Reveal mais lento e vindo de mais baixo do que o padrão do site, só
+   para esse título — o delay de entrada fica a cargo do prop `delay` do
+   componente Reveal. */
+.pv-hero__title.reveal {
+  transform: translateY(52px);
+  transition:
+    opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pv-hero__title.reveal.is-visible {
+  transform: translateY(0);
 }
 
 /* ---------- Garantia (card full-bleed sobre gradiente) ---------- */
 .pv-garantia {
   background: linear-gradient(180deg, #f2f2f2 0%, #d9e2e8 100%);
-  padding: 90px 40px 0;
+  padding: 40px 40px 25px;
 }
 
 .pv-garantia__card {
   position: relative;
-  width: 60%;
+  width: 100%;
   min-height: 550px;
   border-radius: 15px;
   overflow: hidden;
@@ -90,6 +116,7 @@
   color: #d9e2e8;
   font-size: 30px;
   margin-bottom: 16px;
+  font-weight: 800;
 }
 
 .pv-garantia__content p {
@@ -102,7 +129,7 @@
 /* ---------- Split pill cards (Manual / Revisão) ---------- */
 .pv-split {
   background: #d9e2e8;
-  padding: 60px 40px;
+  padding: 25px 40px;
 }
 
 .pv-split__card {
@@ -143,9 +170,34 @@
 
 .pv-split__actions {
   display: flex;
-  gap: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
   margin-top: 12px;
-  flex-wrap: wrap;
+}
+
+.pv-split__actions .btn {
+  background: #1d1d1d;
+  color: #fff;
+  border-color: #1d1d1d;
+}
+
+.pv-split__actions .btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* Texto entra devagar, vindo de baixo pra cima, com um atraso antes de
+   começar — o atraso em si fica a cargo do prop `delay` do Reveal. */
+.pv-split__text.reveal {
+  transform: translateY(46px);
+  transition:
+    opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pv-split__text.reveal.is-visible {
+  transform: translateY(0);
 }
 
 .pv-split--reverse .pv-split__card {
@@ -155,17 +207,13 @@
 /* ---------- Oficinas (fecha a página) ---------- */
 .pv-oficinas {
   background: linear-gradient(180deg, #d9e2e8 0%, #fff 100%);
-  padding: 60px 40px 100px;
+  padding: 25px 40px 100px;
 }
 
 /* ---------- Responsive ----------
    Breakpoints alinhados aos tiers reais do site de referência: tablet em
    ≤1024px, mobile em ≤767px. */
 @media (max-width: 1024px) {
-  .pv-garantia__card {
-    width: 100%;
-  }
-
   .pv-split__card {
     grid-template-columns: 1fr;
   }
