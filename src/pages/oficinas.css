@@ -32,13 +32,27 @@
 .of-hero__title {
   position: relative;
   z-index: 1;
-  font-family: var(--font-display);
-  font-weight: 100;
+  font-family: 'Montserrat', var(--font-display), sans-serif;
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
-  font-size: 35px;
+  letter-spacing: -0.01em;
+  font-size: 38px;
   color: #fff;
   margin: 0;
+}
+
+/* Reveal mais lento e vindo de mais baixo do que o padrão do site, só
+   para esse título — o delay de entrada fica a cargo do prop `delay` do
+   componente Reveal. */
+.of-hero__title.reveal {
+  transform: translateY(52px);
+  transition:
+    opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.of-hero__title.reveal.is-visible {
+  transform: translateY(0);
 }
 
 /* ---------- Filter + Grid ---------- */
