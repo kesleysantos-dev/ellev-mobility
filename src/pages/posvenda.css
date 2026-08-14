@@ -126,6 +126,24 @@
   margin-bottom: 16px;
 }
 
+/* Título, texto e link do card entram um de cada vez (título, depois
+   texto, depois link), devagar e vindo de baixo pra cima — a ordem/atraso
+   entre os três fica a cargo do prop `delay` de cada Reveal. */
+.pv-garantia__content h2.reveal,
+.pv-garantia__content p.reveal,
+.pv-garantia__content a.reveal {
+  transform: translateY(40px);
+  transition:
+    opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pv-garantia__content h2.reveal.is-visible,
+.pv-garantia__content p.reveal.is-visible,
+.pv-garantia__content a.reveal.is-visible {
+  transform: translateY(0);
+}
+
 /* ---------- Split pill cards (Manual / Revisão) ---------- */
 .pv-split {
   background: #d9e2e8;
