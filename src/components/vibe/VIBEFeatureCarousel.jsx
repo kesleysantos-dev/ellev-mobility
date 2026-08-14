@@ -87,39 +87,39 @@ export default function VIBEFeatureCarousel() {
 
   return (
     <section className="vibe-features">
-      <div className="vibe-features__track-wrap" onKeyDown={onKeyDown}>
-        <div
-          className="vibe-features__track"
-          ref={trackRef}
-          tabIndex={0}
-          role="region"
-          aria-label="Diferenciais da VIBE — use as setas do teclado para navegar"
-        >
-          {TRIPLE.map((s) => (
-            <div
-              key={s.key}
-              className="vibe-features__card"
-              style={{ backgroundImage: `url(${s.img})` }}
-            >
-              <span>{s.title}</span>
-            </div>
-          ))}
+      <div className="container">
+        <div className="vibe-features__track-wrap" onKeyDown={onKeyDown}>
+          <div
+            className="vibe-features__track"
+            ref={trackRef}
+            tabIndex={0}
+            role="region"
+            aria-label="Diferenciais da VIBE — use as setas do teclado para navegar"
+          >
+            {TRIPLE.map((s) => (
+              <div
+                key={s.key}
+                className="vibe-features__card"
+                style={{ backgroundImage: `url(${s.img})` }}
+              >
+                <span>{s.title}</span>
+              </div>
+            ))}
+          </div>
+
+          <button className="vibe-features__arrow vibe-features__arrow--prev" onClick={prev} aria-label="Slide anterior">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+
+          <button className="vibe-features__arrow vibe-features__arrow--next" onClick={next} aria-label="Próximo slide">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
         </div>
 
-        <button className="vibe-features__arrow vibe-features__arrow--prev" onClick={prev} aria-label="Slide anterior">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-
-        <button className="vibe-features__arrow vibe-features__arrow--next" onClick={next} aria-label="Próximo slide">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-      </div>
-
-      <div className="container">
         <div className="vibe-features__dots">
           {SLIDES.map((s, i) => (
             <button

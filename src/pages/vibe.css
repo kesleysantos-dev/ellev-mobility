@@ -116,7 +116,7 @@
 /* ---------- Lifestyle statement ---------- */
 .vibe-lifestyle {
   background: var(--bg);
-  padding: 100px 0 0;
+  padding: 30px 0 0;
 }
 
 .vibe-lifestyle__inner {
@@ -143,7 +143,6 @@
 .vibe-lifestyle__img {
   display: block;
   width: 100%;
-  border-radius: var(--radius);
   object-fit: cover;
   max-height: 640px;
 }
@@ -322,7 +321,7 @@
 /* ---------- Feature carousel ---------- */
 .vibe-features {
   background: linear-gradient(180deg, #eef2f6 0%, #f7f9fb 100%);
-  padding: 80px 0;
+  padding: 80px 0 0;
 }
 
 .vibe-features__track-wrap {
@@ -335,9 +334,7 @@
   gap: 14px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scroll-padding-left: max(32px, calc((100vw - var(--container-w)) / 2));
   padding-bottom: 8px;
-  padding-left: max(32px, calc((100vw - var(--container-w)) / 2));
   scrollbar-width: none;
 }
 
@@ -354,10 +351,6 @@
   scroll-snap-align: start;
   background-size: cover;
   background-position: center;
-}
-
-.vibe-features__card:last-child {
-  margin-right: max(32px, calc((100vw - var(--container-w)) / 2));
 }
 
 .vibe-features__card::after {
@@ -419,6 +412,7 @@
 
 .vibe-features__dots {
   display: flex;
+  justify-content: center;
   gap: 8px;
   margin-top: 20px;
 }
@@ -440,7 +434,7 @@
 /* ---------- Shared (compartilhada) ---------- */
 .vibe-shared {
   background: var(--bg);
-  padding: 60px 0;
+  padding: 30px 0 60px;
 }
 
 .vibe-shared__grid {
@@ -514,7 +508,7 @@
 
 /* ---------- Where to buy ---------- */
 .vibe-wtb {
-  padding: 60px 0;
+  padding: 30px 0 60px;
   background: var(--bg-soft, #eef4fc);
 }
 

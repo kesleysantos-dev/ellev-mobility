@@ -16,8 +16,8 @@ export default function VIBELifestyle() {
             uma experiência mais prática, acessível e confiável.
           </p>
         </Reveal>
-        <Reveal as="img" src={lifestylePhoto} alt="Ellev VIBE no dia a dia" className="vibe-lifestyle__img" delay={150} />
       </div>
+      <Reveal as="img" src={lifestylePhoto} alt="Ellev VIBE no dia a dia" className="vibe-lifestyle__img" delay={150} />
     </section>
   )
 }
