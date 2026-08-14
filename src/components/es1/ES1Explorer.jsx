@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Reveal from '../Reveal'
+import icon360 from '../../assets/shared/icons/360icon.png'
 
 const blackModules = import.meta.glob('../../assets/es1/360/black/*.webp', { eager: true, import: 'default' })
 const blueModules = import.meta.glob('../../assets/es1/360/blue/*.webp', { eager: true, import: 'default' })
@@ -33,6 +34,9 @@ export default function ES1Explorer() {
   const [frameIndex, setFrameIndex] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
   const dragRef = useRef(null)
+  const viewerRef = useRef(null)
+  const autoSpinRef = useRef(null)
+  const hasAutoSpunRef = useRef(false)
 
   const color = COLORS[colorIndex]
   const frames = color.frames
@@ -46,7 +50,42 @@ export default function ES1Explorer() {
     })
   }, [colorIndex])
 
+  // Ao entrar na viewport pela primeira vez, gira a moto 360° sozinha e
+  // para de volta no frame inicial — só uma vez, e cancela se o usuário
+  // já começar a arrastar manualmente.
+  useEffect(() => {
+    const el = viewerRef.current
+    if (!el || hasAutoSpunRef.current || !frameCount) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || hasAutoSpunRef.current) return
+        hasAutoSpunRef.current = true
+        observer.disconnect()
+
+        let i = 0
+        autoSpinRef.current = setInterval(() => {
+          i += 1
+          if (i >= frameCount) {
+            setFrameIndex(0)
+            clearInterval(autoSpinRef.current)
+            autoSpinRef.current = null
+            return
+          }
+          setFrameIndex(i)
+        }, 45)
+      },
+      { threshold: 0.4 },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [frameCount])
+
   const onPointerDown = (e) => {
+    if (autoSpinRef.current) {
+      clearInterval(autoSpinRef.current)
+      autoSpinRef.current = null
+    }
     dragRef.current = { startX: e.clientX, startIndex: frameIndex }
     setIsDragging(true)
     e.currentTarget.setPointerCapture(e.pointerId)
@@ -90,6 +129,7 @@ export default function ES1Explorer() {
           </div>
 
           <div
+            ref={viewerRef}
             className="es1-explorer__viewer"
             onPointerDown={onPointerDown}
             onPointerMove={onPointerMove}
@@ -102,11 +142,9 @@ export default function ES1Explorer() {
               className="es1-explorer__frame"
               draggable={false}
             />
-            <div className="es1-explorer__hint">
-              <span className="es1-explorer__hint-badge">360°</span>
-              <span className={`es1-explorer__hint-label ${isDragging ? 'is-hidden' : ''}`}>
-                arraste para girar
-              </span>
+            <div className={`es1-explorer__hint ${isDragging ? 'is-hidden' : ''}`}>
+              <img src={icon360} alt="" className="es1-explorer__hint-badge" aria-hidden="true" />
+              <span className="es1-explorer__hint-label">arraste para girar</span>
             </div>
           </div>
 

@@ -1,11 +1,21 @@
 import { useLayoutEffect, useRef } from 'react'
 import heroPhoto from '../../assets/vibe/misc/hero-bg.webp'
+import heroLogo from '../../assets/vibe/hero-logo/hero-logo-vibe.png'
 import Reveal from '../Reveal'
 
 const SPECS = [
   { label: 'Autonomia', value: 'até 60km*' },
   { label: 'Bateria Removível', value: 'Íon-lítio' },
-  { label: 'Documentação', value: 'Sem CNH/Emplacamento' },
+  {
+    label: 'Documentação',
+    value: (
+      <>
+        Sem CNH/
+        <br />
+        Emplacamento
+      </>
+    ),
+  },
   { label: 'Garantia', value: '02 anos' },
 ]
 
@@ -55,9 +65,12 @@ export default function VIBEHero() {
       <div className="vibe-hero__overlay" />
 
       <div className="vibe-hero__content">
-        <Reveal as="h1" className="vibe-hero__title">
-          VIBE
-        </Reveal>
+        <Reveal
+          as="img"
+          src={heroLogo}
+          alt="VIBE"
+          className="vibe-hero__title--logo"
+        />
         <Reveal as="div" className="vibe-hero__row" delay={120}>
           <div className="vibe-hero__specs">
             {SPECS.map((s, i) => (

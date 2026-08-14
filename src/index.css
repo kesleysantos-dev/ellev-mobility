@@ -556,7 +556,7 @@ a.product-section__label:hover {
 }
 
 .product-section__spec-label {
-  font-size: 0.875rem;
+  font-size: 0.5rem;
   color: var(--text-muted);
 }
 
