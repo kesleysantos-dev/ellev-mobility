@@ -584,11 +584,20 @@
   max-width: 900px;
 }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 900px) {
+/* ---------- Responsive ----------
+   Breakpoints alinhados aos tiers reais do site de referência: tablet em
+   ≤1024px, mobile em ≤767px. */
+@media (max-width: 1024px) {
   .vibe-explorer__grid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+
+  /* No site de referência a imagem do produto vem primeiro no mobile, com
+     as cores e specs abaixo dela — não na ordem do desktop (cores | imagem
+     | specs). */
+  .vibe-explorer__viewer {
+    order: -1;
   }
 
   .vibe-explorer__card {
@@ -609,7 +618,7 @@
     justify-content: center;
   }
 
-  .vibe-explorer__swatch span {
+  .vibe-explorer__swatch span:last-child {
     display: none;
   }
 
@@ -640,7 +649,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .vibe-hero {
     padding: 0 20px 40px;
   }
@@ -649,6 +658,16 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 18px;
+  }
+
+  /* No site de referência a linha de specs do hero nunca empilha —
+     continua em 3 colunas com gap menor. */
+  .vibe-hero__specs {
+    gap: 16px;
+  }
+
+  .vibe-hero__specs > div {
+    flex: 0 1 28%;
   }
 
   .vibe-explorer__watermark {

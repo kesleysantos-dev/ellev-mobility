@@ -660,20 +660,31 @@
   max-width: 900px;
 }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 900px) {
+/* ---------- Responsive ----------
+   Breakpoints alinhados aos tiers reais do site de referência: tablet em
+   ≤1024px, mobile em ≤767px. */
+@media (max-width: 1024px) {
   .es1-explorer__grid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+
+  /* No site de referência a imagem do produto vem primeiro no mobile, com
+     as cores e specs abaixo dela — não na ordem do desktop (cores | imagem
+     | specs). */
+  .es1-explorer__viewer {
+    order: -1;
   }
 
   .es1-explorer__swatches {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 20px;
+    margin-top: 0;
   }
 
-  .es1-explorer__swatch span {
+  .es1-explorer__swatch span:last-child {
     display: none;
   }
 
@@ -721,7 +732,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .es1-brand h2 {
     white-space: normal;
   }
@@ -746,6 +757,16 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 18px;
+  }
+
+  /* No site de referência a linha de specs do hero nunca empilha —
+     continua em 3 colunas com gap menor. */
+  .es1-hero__specs {
+    gap: 16px;
+  }
+
+  .es1-hero__specs > div {
+    flex: 0 1 28%;
   }
 
   .es1-explorer__watermark {

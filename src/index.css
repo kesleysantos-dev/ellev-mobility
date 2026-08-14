@@ -466,6 +466,7 @@ section h2 {
   position: relative;
   z-index: 2;
   border-radius: 32px 32px 0 0;
+  background: linear-gradient(180deg, var(--bg-soft-2) 0%, #f2f2f2 100%);
 }
 
 .product-section__watermark {
@@ -556,7 +557,7 @@ a.product-section__label:hover {
 }
 
 .product-section__spec-label {
-  font-size: 0.5rem;
+  font-size: 0.875rem;
   color: var(--text-muted);
 }
 
@@ -1139,6 +1140,7 @@ a.product-section__label:hover {
 
 .bms__list {
   display: block;
+  min-width: 0;
 }
 
 .bms__item {
@@ -1174,6 +1176,7 @@ a.product-section__label:hover {
 
 .bms__media-wrap {
   position: relative;
+  min-width: 0;
 }
 
 .bms__media {
@@ -1595,41 +1598,12 @@ a.product-section__label:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32);
 }
 
-/* ============ Responsive ============ */
-@media (max-width: 1000px) {
-  .savings__grid,
-  .bms__grid,
-  .engineering__intro {
-    grid-template-columns: 1fr;
-  }
-
-  .bms__media {
-    position: static;
-    aspect-ratio: 16 / 9;
-  }
-
-  .engineering__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .where-to-buy__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .social__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .footer__grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 720px) {
-  section {
-    padding: 64px 0;
-  }
-
+/* ============ Responsive ============
+   Breakpoints alinhados aos tiers reais do site de referência (Elementor):
+   mobile ≤767px, tablet 768–1024px, desktop ≥1025px. O menu do header vira
+   hambúrguer em ≤1024px (confirmado: nav do site original colapsa nesse
+   breakpoint, não em telas de mobile "puro"). */
+@media (max-width: 1024px) {
   .header__inner {
     height: 68px;
   }
@@ -1690,19 +1664,80 @@ a.product-section__label:hover {
     width: 100%;
   }
 
-  .product-section__watermark {
-    font-size: 15vw;
+  .savings__grid,
+  .bms__grid,
+  .engineering__intro {
+    grid-template-columns: 1fr;
   }
 
+  .bms__media {
+    position: static;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .engineering__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .where-to-buy__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .social__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  section {
+    padding: 64px 0;
+  }
+
+  .product-section__watermark {
+    font-size: 149px;
+  }
+
+  /* No site de referência a linha de specs nunca empilha — continua em
+     3 colunas com fonte/gap menores. flex:1 1 0 + min-width:0 divide o
+     espaço igualmente entre as 3, sem depender da largura do conteúdo
+     (que faria embrulhar pra 2+1 em telas estreitas). */
   .product-section__specs {
-    gap: 20px;
-    flex-wrap: wrap;
+    gap: 4px;
+    flex-wrap: nowrap;
   }
 
   .product-section__spec {
-    padding: 0 12px;
+    padding: 0 4px;
     border-left: none;
     width: auto;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .product-section__spec-label {
+    font-size: 0.72rem;
+  }
+
+  .product-section__spec-value {
+    font-size: 1.05rem;
+    white-space: normal;
+  }
+
+  /* No site de referência o vídeo/imagem sobe pra cima do texto no
+     mobile (column-reverse) — aqui simulamos isso reordenando a coluna
+     de mídia antes da lista dentro do mesmo grid. */
+  .bms__media-wrap {
+    order: -1;
   }
 
   .photo-panel__content {
