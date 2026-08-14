@@ -55,10 +55,16 @@ export default function Footer() {
 
         <div className="footer__col">
           <span className="footer__heading">Institucional</span>
-          <a href="/#onde-estamos">Concessionárias</a>
-          <a href="/#consorcio">Consórcio</a>
-          <a href="/#oficinas">Assistência</a>
-          <a href="/#pos-venda">Pós-vendas</a>
+          <Link to="/concessionarias">Concessionárias</Link>
+          <a
+            href="https://parceria.klubi.com.br/consorcio/moto/leva"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Consórcio
+          </a>
+          <Link to="/oficinas">Assistência</Link>
+          <Link to="/pos-venda">Pós-vendas</Link>
         </div>
 
         <div className="footer__col">

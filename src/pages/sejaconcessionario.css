@@ -1,0 +1,193 @@
+/* ============ Seja um concessionário ============ */
+.seja-page {
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+/* ---------- Hero (única section da página) ---------- */
+.seja-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+  padding: 150px;
+}
+
+.seja-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.seja-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(1, 1, 4, 0.25);
+}
+
+.seja-hero__card {
+  position: relative;
+  z-index: 1;
+  width: 85%;
+  max-width: 860px;
+  background: #fff;
+  border-radius: 25px;
+  padding: 48px;
+}
+
+.seja-hero__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-size: clamp(1.4rem, 2.4vw, 1.875rem);
+  line-height: 1.25;
+  width: 85%;
+  color: #2f2e2f;
+  margin-bottom: 18px;
+}
+
+.seja-hero__text {
+  font-family: var(--font-body);
+  color: #2f2e2f;
+  width: 85%;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.seja-hero__success {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--text);
+  padding: 12px 0 4px;
+}
+
+/* ---------- Form ---------- */
+.seja-hero__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.seja-hero__form input[type='text'],
+.seja-hero__form input[type='email'],
+.seja-hero__form select,
+.seja-hero__form textarea {
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #f7f7f6;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text);
+  resize: none;
+}
+
+.seja-hero__form input::placeholder,
+.seja-hero__form textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.seja-hero__form select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23687986' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+}
+
+.seja-hero__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.seja-hero__radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 24px;
+}
+
+.seja-hero__radio-label {
+  flex-basis: 100%;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.seja-hero__radio-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.seja-hero__radio-group input[type='radio'] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--text);
+}
+
+.seja-hero__submit {
+  align-self: flex-start;
+  margin-top: 8px;
+  background: #dce8fa;
+  color: #1d1d1d;
+  border: none;
+  border-radius: 15px;
+  padding: 15px 44px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.seja-hero__submit:hover {
+  background: #c7ddfa;
+}
+
+/* ---------- Responsive ----------
+   Breakpoints alinhados aos tiers reais do site de referência: tablet em
+   ≤1024px, mobile em ≤767px (mesmo padrão aplicado nas páginas EG1/ES1/VIBE). */
+@media (max-width: 1024px) {
+  .seja-hero {
+    padding: 100px 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .seja-hero {
+    padding: 80px 20px 40px;
+  }
+
+  .seja-hero__card {
+    width: 100%;
+    padding: 32px 24px;
+  }
+
+  .seja-hero__title,
+  .seja-hero__text {
+    width: 100%;
+  }
+
+  .seja-hero__row {
+    grid-template-columns: 1fr;
+  }
+}

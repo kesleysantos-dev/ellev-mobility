@@ -1,0 +1,215 @@
+/* ============ Pós-venda ============ */
+.pv-page {
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+.pv-page h1,
+.pv-page h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Hero ---------- */
+.pv-hero {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.pv-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pv-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.89) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.pv-hero__title {
+  position: relative;
+  z-index: 1;
+  font-size: 35px;
+  color: #fff;
+  margin: 0;
+}
+
+/* ---------- Garantia (card full-bleed sobre gradiente) ---------- */
+.pv-garantia {
+  background: linear-gradient(180deg, #f2f2f2 0%, #d9e2e8 100%);
+  padding: 90px 40px 0;
+}
+
+.pv-garantia__card {
+  position: relative;
+  width: 60%;
+  min-height: 550px;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 48px;
+}
+
+.pv-garantia__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pv-garantia__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.pv-garantia__overlay--strong {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.pv-garantia__content {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+}
+
+.pv-garantia__content h2 {
+  color: #d9e2e8;
+  font-size: 30px;
+  margin-bottom: 16px;
+}
+
+.pv-garantia__content p {
+  font-family: var(--font-body);
+  color: #d9e2e8;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+/* ---------- Split pill cards (Manual / Revisão) ---------- */
+.pv-split {
+  background: #d9e2e8;
+  padding: 60px 40px;
+}
+
+.pv-split__card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 460px;
+  border-radius: 29px;
+  overflow: hidden;
+}
+
+.pv-split__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pv-split__text {
+  background: #fff;
+  padding: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pv-split__text h2 {
+  color: #1d1d1d;
+  font-size: 30px;
+  margin-bottom: 16px;
+}
+
+.pv-split__text p {
+  font-family: var(--font-body);
+  color: #1d1d1d;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.pv-split__actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.pv-split--reverse .pv-split__card {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ---------- Oficinas (fecha a página) ---------- */
+.pv-oficinas {
+  background: linear-gradient(180deg, #d9e2e8 0%, #fff 100%);
+  padding: 60px 40px 100px;
+}
+
+/* ---------- Responsive ----------
+   Breakpoints alinhados aos tiers reais do site de referência: tablet em
+   ≤1024px, mobile em ≤767px. */
+@media (max-width: 1024px) {
+  .pv-garantia__card {
+    width: 100%;
+  }
+
+  .pv-split__card {
+    grid-template-columns: 1fr;
+  }
+
+  .pv-split__img {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 767px) {
+  .pv-hero {
+    min-height: 250px;
+  }
+
+  .pv-hero__title {
+    font-size: 20px;
+  }
+
+  .pv-garantia,
+  .pv-split,
+  .pv-oficinas {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .pv-garantia__card {
+    min-height: 430px;
+    padding: 32px 24px;
+  }
+
+  .pv-garantia__overlay {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .pv-split__card {
+    border-radius: 20px;
+  }
+
+  .pv-split__img {
+    aspect-ratio: auto;
+    height: 140px;
+  }
+
+  .pv-split__text {
+    padding: 32px 24px;
+  }
+}

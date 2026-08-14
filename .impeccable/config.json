@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "montserrat",
+        "reason": "User explicitly requested Montserrat Bold by name for the Concessionarias hero title",
+        "createdAt": "2026-08-14T18:48:56.378Z"
+      }
+    ]
+  }
+}

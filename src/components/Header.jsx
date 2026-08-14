@@ -3,14 +3,18 @@ import { Link } from 'react-router-dom';
 import { products } from '../data/products';
 
 const NAV_LEFT = [
-  { label: 'Onde estamos', href: '/#onde-estamos' },
-  { label: 'Seja um concessionário', href: '/#concessionario' },
+  { label: 'Onde estamos', to: '/concessionarias' },
+  { label: 'Seja um concessionário', to: '/seja-um-concessionario' },
 ];
 
 const NAV_RIGHT = [
-  { label: 'Oficinas', href: '/#oficinas' },
-  { label: 'Pós-venda', href: '/#pos-venda' },
-  { label: 'Consórcio Ellev', href: '/#consorcio' },
+  { label: 'Oficinas', to: '/oficinas' },
+  { label: 'Pós-venda', to: '/pos-venda' },
+  {
+    label: 'Consórcio Ellev',
+    href: 'https://parceria.klubi.com.br/consorcio/moto/leva',
+    external: true,
+  },
 ];
 
 export default function Header() {
@@ -140,11 +144,17 @@ export default function Header() {
               </div>
             )}
           </div>
-          {NAV_LEFT.map((link) => (
-            <a key={link.href} href={link.href} className="header__link">
-              {link.label}
-            </a>
-          ))}
+          {NAV_LEFT.map((link) =>
+            link.to ? (
+              <Link key={link.to} to={link.to} className="header__link">
+                {link.label}
+              </Link>
+            ) : (
+              <a key={link.href} href={link.href} className="header__link">
+                {link.label}
+              </a>
+            )
+          )}
         </nav>
 
         <Link to="/" className="header__logo">
@@ -157,14 +167,25 @@ export default function Header() {
         </Link>
 
         <nav className="header__side header__side--right">
-          {NAV_RIGHT.map((link) => (
-            <a key={link.href} href={link.href} className="header__link">
-              {link.label}
-            </a>
-          ))}
-          <a href="/#comprar" className="header__link">
+          {NAV_RIGHT.map((link) =>
+            link.to ? (
+              <Link key={link.to} to={link.to} className="header__link">
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                className="header__link"
+                {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              >
+                {link.label}
+              </a>
+            )
+          )}
+          <Link to="/comprar" className="header__link">
             Comprar
-          </a>
+          </Link>
         </nav>
 
         <button
@@ -200,14 +221,31 @@ export default function Header() {
               </a>
             )
           )}
-          {[...NAV_LEFT, ...NAV_RIGHT].map((link) => (
-            <a key={link.href} href={link.href} className="header__mobile-link">
-              {link.label}
-            </a>
-          ))}
-          <a href="/#comprar" className="btn btn--primary">
+          {[...NAV_LEFT, ...NAV_RIGHT].map((link) =>
+            link.to ? (
+              <Link
+                key={link.to}
+                to={link.to}
+                className="header__mobile-link"
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                className="header__mobile-link"
+                onClick={() => setMenuOpen(false)}
+                {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              >
+                {link.label}
+              </a>
+            )
+          )}
+          <Link to="/comprar" className="btn btn--primary" onClick={() => setMenuOpen(false)}>
             Comprar
-          </a>
+          </Link>
         </nav>
       </div>
     </header>

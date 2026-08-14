@@ -1,0 +1,234 @@
+/* ============ Comprar (configurador) ============ */
+.comprar-page {
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+.comprar {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+  background: #444f5e;
+}
+
+.comprar__row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+/* ---------- Form card ---------- */
+.comprar__card {
+  width: 40%;
+  background: #fff;
+  border-radius: 25px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+}
+
+.comprar__nome {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-size: 2rem;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.comprar__preco {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.comprar__disclaimer {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.comprar__divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.comprar__form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.comprar__form input,
+.comprar__form select {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #f7f7f6;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.comprar__form select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23687986' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+}
+
+.comprar__row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.comprar__submit {
+  margin-top: 8px;
+  background: #1d1d1d;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  padding: 16px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.comprar__submit:hover {
+  background: #000;
+}
+
+.comprar__success {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.comprar__fineprint {
+  margin-top: 20px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Viewer column ---------- */
+.comprar__viewer-col {
+  width: 60%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.comprar__watermark {
+  position: absolute;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: min(20vw, 220px);
+  color: #5b6675;
+  opacity: 0.5;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  text-transform: uppercase;
+}
+
+.comprar__viewer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.comprar__viewer:active {
+  cursor: grabbing;
+}
+
+.comprar__frame {
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.comprar__hint {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.comprar__hint.is-hidden {
+  opacity: 0;
+}
+
+.comprar__hint-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 6px 14px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* ---------- Responsive ----------
+   Breakpoints alinhados aos tiers reais do site de referência: tablet em
+   ≤1024px, mobile em ≤767px. No mobile a coluna da imagem vem antes do
+   formulário (column-reverse), igual ao comportamento do site original. */
+@media (max-width: 1024px) {
+  .comprar__row {
+    flex-direction: column-reverse;
+  }
+
+  .comprar__card,
+  .comprar__viewer-col {
+    width: 100%;
+  }
+
+  .comprar__viewer-col {
+    padding: 40px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .comprar {
+    padding: 40px 0;
+  }
+
+  .comprar__card {
+    padding: 32px 24px;
+  }
+
+  .comprar__row2 {
+    grid-template-columns: 1fr;
+  }
+
+  .comprar__watermark {
+    font-size: 29vw;
+  }
+}

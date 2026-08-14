@@ -1,0 +1,207 @@
+/* ============ Concessionárias (Onde estamos) ============ */
+.conc-page {
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+/* ---------- Hero ---------- */
+.conc-hero {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.conc-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom center;
+}
+
+.conc-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.89) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.conc-hero__title {
+  position: relative;
+  z-index: 1;
+  font-family: 'Montserrat', var(--font-display), sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  font-size: 38px;
+  color: #fff;
+  margin: 0;
+}
+
+/* Reveal mais lento e vindo de mais baixo do que o padrão do site, só
+   para esse título — o delay de entrada fica a cargo do prop `delay` do
+   componente Reveal. */
+.conc-hero__title.reveal {
+  transform: translateY(52px);
+  transition:
+    opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.conc-hero__title.reveal.is-visible {
+  transform: translateY(0);
+}
+
+/* ---------- Filter + Grid ---------- */
+.conc-list {
+  background: #fff;
+  padding: 32px 0 80px;
+}
+
+.conc-list__filter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  opacity: 0.8;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.conc-list__filter select {
+  width: 214px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text);
+  background: #fff;
+  cursor: pointer;
+}
+
+.conc-list__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.conc-card {
+  background: #1d1d1d;
+  border-radius: 20px;
+  padding: 40px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.conc-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.conc-card__city {
+  font-family: var(--font-body);
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.conc-card__state {
+  font-family: var(--font-body);
+  color: #52abb8;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.conc-card__name {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: #fff;
+  font-size: 1.35rem;
+  text-transform: none;
+  letter-spacing: 0;
+  margin: 0 0 12px;
+}
+
+.conc-card__address {
+  font-family: var(--font-body);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+
+.conc-card__whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.conc-card__map {
+  align-self: flex-start;
+  margin-top: auto;
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- Responsive ----------
+   Breakpoints alinhados aos tiers reais do site de referência: tablet em
+   ≤1024px, mobile em ≤767px. */
+@media (max-width: 1024px) {
+  .conc-list__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .conc-hero {
+    min-height: 250px;
+  }
+
+  .conc-hero__title {
+    font-size: 20px;
+  }
+
+  .conc-list {
+    padding: 20px 0 60px;
+  }
+
+  .conc-list__filter {
+    justify-content: space-between;
+  }
+
+  .conc-list__filter select {
+    width: auto;
+    flex: 1;
+  }
+
+  .conc-list__grid {
+    grid-template-columns: 1fr;
+  }
+}

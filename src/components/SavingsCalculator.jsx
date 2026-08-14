@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Reveal from './Reveal';
 
 const GAS_PRICE_PER_L = 6.1;
@@ -77,9 +78,9 @@ export default function SavingsCalculator() {
             </div>
           </div>
 
-          <a href="#comprar" className="btn btn--primary savings__cta">
+          <Link to="/comprar" className="btn btn--primary savings__cta">
             Onde comprar
-          </a>
+          </Link>
         </Reveal>
 
         <Reveal as="div" className="savings__panel" delay={100}>

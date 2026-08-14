@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom'
 import Reveal from './Reveal'
 import showroom from '../assets/store/showroom.png'
 import oficina from '../assets/store/oficina.png'
 
 const CARDS = [
-  { title: 'Onde\nComprar', href: '#comprar', id: 'onde-estamos', photo: showroom },
-  { title: 'Nossas\nOficinas', href: '#oficinas', id: 'oficinas', photo: oficina },
+  { title: 'Onde\nComprar', to: '/comprar', photo: showroom },
+  { title: 'Nossas\nOficinas', to: '/oficinas', photo: oficina },
 ]
 
 export default function WhereToBuy() {
@@ -12,7 +13,7 @@ export default function WhereToBuy() {
     <section className="where-to-buy">
       <div className="container where-to-buy__grid">
         {CARDS.map((c) => (
-          <a key={c.title} href={c.href} id={c.id} className="photo-card">
+          <Link key={c.title} to={c.to} className="photo-card">
             <img src={c.photo} alt="" className="photo-card__photo" />
             <div className="photo-card__overlay" />
             <Reveal as="div" className="photo-card__content">
@@ -25,7 +26,7 @@ export default function WhereToBuy() {
                 </svg>
               </span>
             </Reveal>
-          </a>
+          </Link>
         ))}
       </div>
     </section>
