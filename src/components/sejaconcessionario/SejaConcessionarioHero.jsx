@@ -23,15 +23,17 @@ export default function SejaConcessionarioHero() {
       <div className="seja-hero__overlay" />
 
       <Reveal as="div" className="seja-hero__card">
-        <h1 className="seja-hero__title">Faça parte do futuro da mobilidade elétrica.</h1>
-        <p className="seja-hero__text">
+        <Reveal as="h1" className="seja-hero__title" delay={150}>
+          Faça parte do futuro da mobilidade elétrica.
+        </Reveal>
+        <Reveal as="p" className="seja-hero__text" delay={400}>
           A demanda por motos elétricas de alta qualidade, tecnologia e design só cresce no
           Brasil.
           <br />
           Com um pós-venda de qualidade, a ELLEV está se preparando para levar sua marca para
           todos os cantos do Brasil. Se você quer fazer parte do futuro da mobilidade elétrica,
           preencha o formulário:
-        </p>
+        </Reveal>
 
         {sent ? (
           <p className="seja-hero__success">
