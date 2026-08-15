@@ -11,7 +11,7 @@ export default function ES1ElectricBanner() {
       <Reveal as="div" className="es1-electric__content" delay={300}>
         <h2>100% elétrica</h2>
         <p>Carrega em tomadas<br />comuns de 127V ou 220V.</p>
-        <ArrowLink href="/#onde-estamos">Onde comprar</ArrowLink>
+        <ArrowLink to="/concessionarias">Onde comprar</ArrowLink>
       </Reveal>
     </section>
   )

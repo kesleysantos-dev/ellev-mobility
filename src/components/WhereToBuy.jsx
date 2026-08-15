@@ -4,7 +4,7 @@ import showroom from '../assets/store/showroom.png'
 import oficina from '../assets/store/oficina.png'
 
 const CARDS = [
-  { title: 'Onde\nComprar', to: '/comprar', photo: showroom },
+  { title: 'Onde\nComprar', to: '/concessionarias', photo: showroom },
   { title: 'Nossas\nOficinas', to: '/oficinas', photo: oficina },
 ]
 

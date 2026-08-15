@@ -1,10 +1,26 @@
-export default function ArrowLink({ href, light = false, children }) {
+import { Link } from 'react-router-dom'
+
+export default function ArrowLink({ href, to, light = false, children }) {
+  const className = `eg1-link ${light ? 'eg1-link--light' : ''}`
+  const arrow = (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+
+  if (to) {
+    return (
+      <Link to={to} className={className}>
+        {children}
+        {arrow}
+      </Link>
+    )
+  }
+
   return (
-    <a href={href} className={`eg1-link ${light ? 'eg1-link--light' : ''}`}>
+    <a href={href} className={className}>
       {children}
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
+      {arrow}
     </a>
   )
 }

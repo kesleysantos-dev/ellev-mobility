@@ -2,11 +2,15 @@ import { useMemo, useState } from 'react'
 import Reveal from '../Reveal'
 import { dealers, dealerStates } from '../../data/dealers'
 
+// Por enquanto mostramos só as 3 primeiras concessionárias — o restante
+// fica oculto até decidirmos exibir a lista completa novamente.
+const VISIBLE_LIMIT = 3
+
 export default function ConcessionariasList() {
   const [state, setState] = useState('')
 
   const filtered = useMemo(
-    () => (state ? dealers.filter((d) => d.state === state) : dealers),
+    () => (state ? dealers.filter((d) => d.state === state) : dealers).slice(0, VISIBLE_LIMIT),
     [state],
   )
 

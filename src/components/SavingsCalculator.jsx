@@ -78,7 +78,7 @@ export default function SavingsCalculator() {
             </div>
           </div>
 
-          <Link to="/comprar" className="btn btn--primary savings__cta">
+          <Link to="/concessionarias" className="btn btn--primary savings__cta">
             Onde comprar
           </Link>
         </Reveal>

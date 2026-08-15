@@ -11,6 +11,7 @@ import ConcessionariasPage from './pages/ConcessionariasPage'
 import OficinasPage from './pages/OficinasPage'
 import PosVendaPage from './pages/PosVendaPage'
 import ComprarPage from './pages/ComprarPage'
+import ObrigadoPage from './pages/ObrigadoPage'
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/oficinas" element={<OficinasPage />} />
           <Route path="/pos-venda" element={<PosVendaPage />} />
           <Route path="/comprar" element={<ComprarPage />} />
+          <Route path="/obrigado" element={<ObrigadoPage />} />
         </Routes>
       </main>
       <Footer />

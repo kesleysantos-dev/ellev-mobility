@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Reveal from '../Reveal'
 import heroPhoto from '../../assets/sejaconcessionario/hero-loja-leva.webp'
 
@@ -9,12 +10,15 @@ const ESTADOS = [
 ]
 
 export default function SejaConcessionarioHero() {
-  const [sent, setSent] = useState(false)
+  const navigate = useNavigate()
   const [temExperiencia, setTemExperiencia] = useState('')
 
+  // Sem recebedor configurado ainda — o formulário valida e "funciona" na
+  // interface (navega até a página de agradecimento), mas não envia os
+  // dados pra lugar nenhum até termos um destino real definido.
   const onSubmit = (e) => {
     e.preventDefault()
-    setSent(true)
+    navigate('/obrigado')
   }
 
   return (
@@ -35,12 +39,7 @@ export default function SejaConcessionarioHero() {
           preencha o formulário:
         </Reveal>
 
-        {sent ? (
-          <p className="seja-hero__success">
-            Recebemos seus dados! Nosso time vai entrar em contato em breve.
-          </p>
-        ) : (
-          <form className="seja-hero__form" onSubmit={onSubmit}>
+        <form className="seja-hero__form" onSubmit={onSubmit}>
             <input type="text" name="nome" placeholder="Nome Completo" required />
             <input type="text" name="whatsapp" placeholder="Whatsapp" required />
             <input type="email" name="email" placeholder="E-mail" required />
@@ -96,8 +95,7 @@ export default function SejaConcessionarioHero() {
             <button type="submit" className="seja-hero__submit">
               ENVIAR
             </button>
-          </form>
-        )}
+        </form>
       </Reveal>
     </section>
   )

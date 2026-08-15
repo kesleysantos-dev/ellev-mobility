@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Reveal from '../Reveal'
 
 export default function ES1BrandStatement() {
@@ -20,9 +21,9 @@ export default function ES1BrandStatement() {
             Esse é o nosso compromisso: entregar mobilidade elétrica que une{' '}
             <strong>inovação e tranquilidade para o seu dia a dia.</strong>
           </p>
-          <a href="/#onde-estamos" className="btn btn--primary">
+          <Link to="/concessionarias" className="btn btn--primary">
             Onde comprar
-          </a>
+          </Link>
         </Reveal>
       </div>
     </section>

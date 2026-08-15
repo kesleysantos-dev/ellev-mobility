@@ -12,7 +12,7 @@ export default function EG1ElectricBanner() {
         <h2>100% elétrica</h2>
         <p>Carrega em tomadas<br />comuns de 127V ou 220V.</p>
         <p>Carregamento Rápido T2</p>
-        <ArrowLink href="/#onde-estamos" light>
+        <ArrowLink to="/concessionarias" light>
           Onde comprar
         </ArrowLink>
       </Reveal>

@@ -2,11 +2,15 @@ import { useMemo, useState } from 'react'
 import Reveal from '../Reveal'
 import { workshops, workshopStates } from '../../data/workshops'
 
+// Por enquanto mostramos só as 3 primeiras oficinas — o restante fica
+// oculto até decidirmos exibir a lista completa novamente.
+const VISIBLE_LIMIT = 3
+
 export default function OficinasList() {
   const [state, setState] = useState('')
 
   const filtered = useMemo(
-    () => (state ? workshops.filter((w) => w.state === state) : workshops),
+    () => (state ? workshops.filter((w) => w.state === state) : workshops).slice(0, VISIBLE_LIMIT),
     [state],
   )
 
