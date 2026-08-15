@@ -343,6 +343,31 @@ section h2 {
   display: none;
 }
 
+/* A partir de ~1560px o header tem espaço de sobra (gaps em clamp com teto
+   de 56px), mas entre o fim do burger (1024px) e ~1320px os 7 itens de
+   nav + logo não cabem mais na largura disponível e o header estoura
+   horizontalmente — encolhe fonte/gaps só nessa faixa pra caber sem
+   quebrar antes do breakpoint do burger. */
+@media (min-width: 1025px) and (max-width: 1320px) {
+  .header__inner {
+    gap: clamp(8px, 1.6vw, 40px);
+    padding: 0 16px;
+  }
+
+  .header__side {
+    gap: clamp(6px, 1vw, 32px);
+  }
+
+  .header__link {
+    font-size: 10.5px;
+    letter-spacing: 1.1px;
+  }
+
+  .header__logo-img {
+    height: 56px;
+  }
+}
+
 /* ============ Hero (video) ============ */
 .hero {
   position: sticky;
@@ -1644,6 +1669,25 @@ a.product-section__label:hover {
   .bms__grid,
   .engineering__intro {
     grid-template-columns: 1fr;
+  }
+
+  /* Specs fixos em 340px cada (1020px no total) estouram a largura da
+     section em qualquer tablet entre 768-1024px — troca pra flex:1 1 0
+     pra dividir o espaço disponível igualmente, sem depender de largura
+     fixa. Mantido em nowrap: no site de referência a linha nunca empilha. */
+  .product-section__specs {
+    flex-wrap: nowrap;
+  }
+
+  .product-section__spec {
+    width: auto;
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0 16px;
+  }
+
+  .product-section__spec-value {
+    white-space: normal;
   }
 
   .bms__media {

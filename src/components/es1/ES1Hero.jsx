@@ -17,10 +17,19 @@ function useBaselineAlign(referenceRef, targetRef) {
       const reference = referenceRef.current
       const target = targetRef.current
       if (!reference || !target) return
-      if (window.innerWidth <= 600) {
-        target.style.transform = ''
-        return
-      }
+
+      target.style.transform = ''
+
+      // O preço só deve ser alinhado ao baseline dos specs quando os dois
+      // estão na mesma linha do flex row — abaixo de ~900px o row quebra
+      // (flex-wrap) e o preço cai numa linha própria, então aplicar o
+      // transform aqui empurraria ele de volta por cima da linha de specs.
+      const specsBox = target.previousElementSibling
+      const wrapped =
+        specsBox &&
+        target.getBoundingClientRect().top >=
+          specsBox.getBoundingClientRect().bottom - 2
+      if (wrapped) return
 
       const measureBaseline = (el) => {
         const cs = getComputedStyle(el)
@@ -31,7 +40,6 @@ function useBaselineAlign(referenceRef, targetRef) {
         return el.getBoundingClientRect().top + ascent
       }
 
-      target.style.transform = ''
       const delta = measureBaseline(reference) - measureBaseline(target)
       target.style.transform = `translateY(${delta}px)`
     }
