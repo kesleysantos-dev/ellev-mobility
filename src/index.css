@@ -226,22 +226,10 @@ section h2 {
   transition: color 0.3s ease;
 }
 
-.header__logo-top {
+.header__logo-img {
   display: block;
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 2.2rem;
-  letter-spacing: 0.12em;
-  transform-origin: center;
-}
-
-.header__logo-bottom {
-  display: block;
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: 1.2rem;
-  letter-spacing: 0.42em;
-  margin-top: -12px;
+  height: 83px;
+  width: auto;
 }
 
 .header__link {
@@ -1499,20 +1487,22 @@ a.product-section__label:hover {
 .footer {
   background: var(--bg-dark);
   color: var(--text-on-dark);
-  padding-top: 72px;
+  padding-top: 82px;
 }
 
 .footer__grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1fr 0.8fr;
   gap: 32px;
-  padding-bottom: 48px;
+
+  padding-bottom: 150px;
 }
 
 .footer__col {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding-top: 8px;
 }
 
 .footer__heading {
@@ -1527,24 +1517,11 @@ a.product-section__label:hover {
   align-items: flex-start;
 }
 
-.footer__logo-top {
+.footer__logo-img {
   display: block;
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 2.2rem;
-  letter-spacing: 0.12em;
-  color: #fff;
-  transform-origin: left center;
-}
-
-.footer__logo-bottom {
-  display: block;
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: 1.2rem;
-  letter-spacing: 0.42em;
-  color: #fff;
-  margin-top: -12px;
+  height: 86px;
+  width: auto;
+  opacity: 3;
 }
 
 .footer__col a {
@@ -1567,8 +1544,7 @@ a.product-section__label:hover {
   display: flex;
   justify-content: center;
   text-align: center;
-  border-top: 1px solid var(--border-on-dark);
-  padding: 24px 0;
+  padding: 24px 0 50px;
   font-size: 0.82rem;
   color: var(--text-on-dark-muted);
 }

@@ -1,6 +1,7 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { products } from '../data/products';
+import logo from '../assets/logo/logo-ellev-white.png';
 
 const NAV_LEFT = [
   { label: 'Onde estamos', to: '/concessionarias' },
@@ -24,25 +25,6 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [headerVisible, setHeaderVisible] = useState(true);
-  const logoTopRef = useRef(null);
-  const logoBottomRef = useRef(null);
-
-  useLayoutEffect(() => {
-    const scaleLogo = () => {
-      const top = logoTopRef.current;
-      const bottom = logoBottomRef.current;
-      if (!top || !bottom) return;
-      top.style.transform = 'scaleX(1)';
-      const topWidth = top.getBoundingClientRect().width;
-      const bottomWidth = bottom.getBoundingClientRect().width;
-      if (topWidth > 0) {
-        top.style.transform = `scaleX(${bottomWidth / topWidth})`;
-      }
-    };
-    scaleLogo();
-    window.addEventListener('resize', scaleLogo);
-    return () => window.removeEventListener('resize', scaleLogo);
-  }, []);
 
   const openDropdown = () => {
     clearTimeout(closeTimer.current);
@@ -158,12 +140,7 @@ export default function Header() {
         </nav>
 
         <Link to="/" className="header__logo">
-          <span ref={logoTopRef} className="header__logo-top">
-            ELLEV
-          </span>
-          <span ref={logoBottomRef} className="header__logo-bottom">
-            MOBILITY
-          </span>
+          <img src={logo} alt="Ellev Mobility" className="header__logo-img" />
         </Link>
 
         <nav className="header__side header__side--right">
