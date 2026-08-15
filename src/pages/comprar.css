@@ -30,19 +30,19 @@
 }
 
 .comprar__nome {
-  font-family: var(--font-display);
+  font-family: area-normal, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.01em;
-  font-size: 2rem;
+  letter-spacing: 0;
+  font-size: 5.6rem;
   color: var(--text);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .comprar__preco {
   font-family: var(--font-body);
   font-weight: 800;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   color: var(--text);
   margin-bottom: 6px;
 }
@@ -140,9 +140,10 @@
   position: absolute;
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: min(20vw, 220px);
-  color: #5b6675;
-  opacity: 0.5;
+  font-size: min(40vw, 320px);
+  top: -6px;
+  color: #000;
+  opacity: 0.04;
   white-space: nowrap;
   pointer-events: none;
   user-select: none;

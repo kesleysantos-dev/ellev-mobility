@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import Reveal from '../Reveal'
 import { MODELS, ESTADOS } from '../../data/comprarModels'
 
@@ -43,6 +43,9 @@ export default function ComprarConfigurator() {
   const [isDragging, setIsDragging] = useState(false)
   const [sent, setSent] = useState(false)
   const dragRef = useRef(null)
+  const autoSpinTimeoutRef = useRef(null)
+  const autoSpinIntervalRef = useRef(null)
+  const hasAutoSpunRef = useRef(false)
 
   const modelo = MODELS.find((m) => m.id === modeloId)
   const corAtual = modelo.cores.find((c) => c.value === cor) ?? modelo.cores[0]
@@ -51,6 +54,34 @@ export default function ComprarConfigurator() {
     [modeloId, corAtual.folder],
   )
   const frameCount = frames.length
+  const frameCountRef = useRef(frameCount)
+  frameCountRef.current = frameCount
+
+  // Ao chegar na página, espera 2s e gira a moto 360° sozinha, parando de
+  // volta no frame inicial — só uma vez, mesmo padrão usado nas sections
+  // "Explore" das páginas de produto, mas disparado por tempo em vez de
+  // scroll (aqui o visualizador já está visível assim que a página carrega).
+  useEffect(() => {
+    autoSpinTimeoutRef.current = setTimeout(() => {
+      if (hasAutoSpunRef.current) return
+      hasAutoSpunRef.current = true
+      let i = 0
+      autoSpinIntervalRef.current = setInterval(() => {
+        i += 1
+        if (i >= frameCountRef.current) {
+          setFrameIndex(0)
+          clearInterval(autoSpinIntervalRef.current)
+          autoSpinIntervalRef.current = null
+          return
+        }
+        setFrameIndex(i)
+      }, 45)
+    }, 2000)
+    return () => {
+      clearTimeout(autoSpinTimeoutRef.current)
+      if (autoSpinIntervalRef.current) clearInterval(autoSpinIntervalRef.current)
+    }
+  }, [])
 
   const onModeloChange = (id) => {
     const next = MODELS.find((m) => m.id === id)
@@ -65,6 +96,12 @@ export default function ComprarConfigurator() {
   }
 
   const onPointerDown = (e) => {
+    hasAutoSpunRef.current = true
+    clearTimeout(autoSpinTimeoutRef.current)
+    if (autoSpinIntervalRef.current) {
+      clearInterval(autoSpinIntervalRef.current)
+      autoSpinIntervalRef.current = null
+    }
     dragRef.current = { startX: e.clientX, startIndex: frameIndex }
     setIsDragging(true)
     e.currentTarget.setPointerCapture(e.pointerId)
