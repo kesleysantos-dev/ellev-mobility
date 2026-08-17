@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Reveal from '../Reveal';
-import dealershipPhoto from '../../assets/es1/misc/dealership.webp';
+import dealershipPhoto from '../../assets/es1/misc/dealership.png';
 
 export default function ES1WhereToBuy() {
   return (
@@ -9,7 +9,7 @@ export default function ES1WhereToBuy() {
         <Reveal as="div" className="es1-wtb__card">
           <img
             src={dealershipPhoto}
-            alt="Loja Ellev"
+            alt="Loja Ellev I5 JOY"
             className="es1-wtb__img"
           />
           <div className="es1-wtb__overlay" />

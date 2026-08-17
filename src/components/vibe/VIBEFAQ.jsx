@@ -13,11 +13,11 @@ const ITEMS = [
   {
     title: 'É possível colocar baú ou outros acessórios?',
     content: (
-      <p>As motos VIBE já acompanham encosto para o carona e baú. Basta escolher na hora da compra.</p>
+      <p>As motos X13 já acompanham encosto para o carona e baú. Basta escolher na hora da compra.</p>
     ),
   },
   {
-    title: 'Qual a garantia da VIBE?',
+    title: 'Qual a garantia da X13?',
     content: (
       <p>
         A ELLEV oferece garantia de 24 meses para defeitos de fabricação em todos os componentes
@@ -39,9 +39,8 @@ const ITEMS = [
     title: 'Como funciona o carregamento?',
     content: (
       <p>
-        A VIBE conta com bateria de lítio que pode ser removida para recarga. Além disso, ela
-        também conta com uma porta de carregamento direto na própria moto. Ou seja, você pode
-        carregá-la sem precisar remover a bateria.
+        A X13 conta com bateria chumbo-ácida selada e porta de carregamento direto na própria
+        moto — basta conectar em uma tomada comum, sem precisar remover a bateria.
       </p>
     ),
   },

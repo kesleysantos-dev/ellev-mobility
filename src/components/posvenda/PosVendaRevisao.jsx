@@ -17,14 +17,6 @@ export default function PosVendaRevisao() {
               Mais do que conveniência, é o nosso compromisso com a transparência e o cuidado em
               cada quilômetro rodado.
             </p>
-            <div className="pv-split__actions">
-              <a href="#" onClick={(e) => e.preventDefault()} className="btn btn--pill">
-                Baixar tabela EG1
-              </a>
-              <a href="#" onClick={(e) => e.preventDefault()} className="btn btn--pill">
-                Baixar tabela ES1
-              </a>
-            </div>
           </Reveal>
           <img src={photo} alt="" className="pv-split__img" />
         </Reveal>

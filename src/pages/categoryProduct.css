@@ -1,0 +1,155 @@
+/* ============ Página simples de produto (categorias novas) ============ */
+.moto-page {
+  background: var(--bg-dark);
+  overflow-x: hidden;
+}
+
+/* Mesma fonte/peso bold usados nos títulos do EG1/ES1/VIBE (o h1 padrão do
+   site é bem fino — Jost 200 — o que não bate com o visual pedido). */
+.moto-page h1,
+.moto-page h2,
+.moto-page h3 {
+  font-family: 'Archivo Black', var(--font-display), sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+/* Sem hero antes dela — precisa do próprio respiro pro header fixo não
+   sobrepor o título. */
+.moto-techspecs {
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+  padding: 170px 0 90px;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.moto-techspecs--empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.moto-techspecs h1 {
+  color: var(--text-on-dark);
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  margin-bottom: 36px;
+}
+
+.moto-techspecs__grid {
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* .btn--primary é escuro sobre claro — nessa página o fundo já é escuro
+   (mesma cor do botão), então precisa da própria versão clara aqui.
+   Especificidade extra (.moto-page à frente) pra vencer .btn--primary
+   independente da ordem em que o CSS é concatenado no build. */
+.moto-page .moto-techspecs__cta {
+  margin-top: 40px;
+  background: #fff;
+  border-color: #fff;
+  color: var(--bg-dark);
+}
+
+.moto-page .moto-techspecs__cta:hover {
+  background: var(--accent-teal);
+  border-color: var(--accent-teal);
+  color: var(--bg-dark);
+}
+
+/* Ainda não temos fotos de estúdio reais desses modelos — só o recorte
+   (fundo transparente), então simulamos o painel escuro com um gradiente
+   e centralizamos a moto dentro dele. */
+.moto-techspecs__panel {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-height: 480px;
+  max-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background: radial-gradient(120% 100% at 50% 15%, #2c5872 0%, #16324a 45%, #0a1a26 100%);
+}
+
+.moto-techspecs__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 30px 30px rgba(0, 0, 0, 0.45));
+}
+
+/* ---------- Accordion (mesmo padrão visual do EG1/ES1/VIBE) ---------- */
+.eg1-accordion__item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.32);
+}
+
+.eg1-accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 18px 0;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: var(--text-on-dark);
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.eg1-accordion__icon {
+  flex: none;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.eg1-accordion__content {
+  padding: 0 0 22px;
+  font-family: var(--font-body);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+.eg1-accordion__content p {
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0 0 0.4em;
+  line-height: inherit;
+}
+
+/* ---------- Responsive ----------
+   Breakpoints alinhados aos tiers reais do site de referência: tablet em
+   ≤1024px, mobile em ≤767px. */
+@media (max-width: 1024px) {
+  .moto-techspecs__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .moto-techspecs__panel {
+    order: -1;
+    max-height: 360px;
+  }
+}
+
+@media (max-width: 767px) {
+  .moto-techspecs {
+    padding: 130px 0 60px;
+  }
+
+  .moto-techspecs__panel {
+    min-height: 280px;
+    max-height: 300px;
+  }
+}

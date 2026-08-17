@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../Reveal'
-import dealershipPhoto from '../../assets/vibe/misc/dealership.webp'
+import dealershipPhoto from '../../assets/vibe/misc/dealership.png'
 
 export default function VIBEWhereToBuy() {
   return (
     <section className="vibe-wtb">
       <div className="container">
         <Reveal as="div" className="vibe-wtb__card">
-          <img src={dealershipPhoto} alt="Loja Ellev" className="vibe-wtb__img" />
+          <img src={dealershipPhoto} alt="Loja Ellev X13" className="vibe-wtb__img" />
           <div className="vibe-wtb__overlay" />
           <div className="vibe-wtb__content">
             <Reveal as="h1" delay={150}>

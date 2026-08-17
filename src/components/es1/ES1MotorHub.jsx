@@ -7,26 +7,24 @@ export default function ES1MotorHub() {
       <div className="container">
         <Reveal as="div" className="es1-motorhub__card">
           <div className="es1-motorhub__text">
-            <h2>Motor Hub de Última Geração</h2>
+            <h2>Motor de Última Geração</h2>
             <p>
-              O motor da ES1 foi desenvolvido para entregar alto desempenho com baixa
+              O motor da I5 JOY foi desenvolvido para entregar alto desempenho com baixa
               manutenção, combinando potência, eficiência e durabilidade:
             </p>
             <p className="es1-motorhub__spec">
-              <strong>3 em 1</strong>: motor, controladora e balança integrados — menos peças,
-              mais confiabilidade.
+              <strong>Potência real:</strong> 1.000 W, com velocidade máxima de 32 km/h.
             </p>
             <p className="es1-motorhub__spec">
-              <strong>Potência real:</strong> até 9.000 W, com velocidade máxima de 100 km/h.
+              <strong>Capacidade de escalada:</strong> até 25°, mesmo em subidas do dia a dia.
             </p>
             <p className="es1-motorhub__spec">
-              <strong>Maior eficiência:</strong> controle vetorial FOC3.0 garante aceleração
-              suave e precisa, com menor perda de energia.
+              <strong>Maior eficiência:</strong> controle eletrônico garante aceleração suave e
+              precisa, com menor perda de energia.
             </p>
             <p className="es1-motorhub__spec">
-              <strong>Manutenção simplificada:</strong> o design modular permite desmontagem
-              rápida do cubo, reduzindo o tempo e o custo de manutenção — além de possibilitar
-              trocar pneu ou realizar serviços na roda sem remover o motor.
+              <strong>Manutenção simplificada:</strong> design pensado para reduzir o tempo e o
+              custo de manutenção no dia a dia.
             </p>
           </div>
           <video
@@ -36,7 +34,7 @@ export default function ES1MotorHub() {
             muted
             playsInline
             loop
-            aria-label="Animação do Motor Hub da ES1"
+            aria-label="Animação do motor da I5 JOY"
           />
         </Reveal>
       </div>

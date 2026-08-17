@@ -93,14 +93,14 @@ export default function SocialSection() {
             className="social__post social__post--dark"
             delay={0}
           >
-            <img src={studioDark} alt="Ellev VIBE" className="social__image" />
-            <span className="social__wordmark">VIBE</span>
+            <img src={studioDark} alt="Ellev X13" className="social__image" />
+            <span className="social__wordmark">X13</span>
           </Reveal>
 
           <Reveal as="div" className="social__post" delay={60}>
             <img
               src={lifestyle}
-              alt="Cliente andando de Ellev VIBE"
+              alt="Cliente andando de Ellev X13"
               className="social__image"
             />
             <div className="social__post-overlay" />
@@ -132,12 +132,12 @@ export default function SocialSection() {
           >
             <img
               src={blueScooter}
-              alt="Sua nova Ellev VIBE"
+              alt="Sua nova Ellev X13"
               className="social__image"
             />
             <span className="social__wordmark social__wordmark--stacked">
               <small>Sua nova</small>
-              VIBE
+              X13
             </span>
           </Reveal>
 

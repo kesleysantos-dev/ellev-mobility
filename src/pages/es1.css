@@ -169,7 +169,6 @@
   gap: 12px;
   background: none;
   border: none;
-  cursor: pointer;
   padding: 0;
   color: rgba(217, 226, 232, 0.65);
   font-size: 0.78rem;
@@ -198,13 +197,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  touch-action: pan-y;
-  cursor: grab;
   user-select: none;
-}
-
-.es1-explorer__viewer:active {
-  cursor: grabbing;
 }
 
 .es1-explorer__frame {
@@ -571,7 +564,7 @@
 .es1-techspecs__grid {
   display: grid;
   grid-template-columns: 1fr 0.85fr;
-  gap: 60px;
+  gap: 30px;
   align-items: start;
 }
 
@@ -602,7 +595,6 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
 .es1-wtb__overlay {

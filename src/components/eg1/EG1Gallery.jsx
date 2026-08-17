@@ -1,9 +1,9 @@
-import pic1 from '../../assets/eg1/gallery/pic-1.webp'
-import pic2 from '../../assets/eg1/gallery/pic-2.webp'
-import pic3 from '../../assets/eg1/gallery/pic-3.webp'
-import pic4 from '../../assets/eg1/gallery/pic-4.webp'
-import pic5 from '../../assets/eg1/gallery/pic-5.webp'
-import pic6 from '../../assets/eg1/gallery/pic-6.webp'
+import pic1 from '../../assets/eg1/gallery/u-1.jpg'
+import pic2 from '../../assets/eg1/gallery/u-2.jpg'
+import pic3 from '../../assets/eg1/gallery/u-3.jpg'
+import pic4 from '../../assets/eg1/gallery/u-4.jpg'
+import pic5 from '../../assets/eg1/gallery/u-5.jpg'
+import pic6 from '../../assets/eg1/gallery/u-6.jpg'
 
 const PICS = [pic1, pic2, pic3, pic4, pic5, pic6]
 

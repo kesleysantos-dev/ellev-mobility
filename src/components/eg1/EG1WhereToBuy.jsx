@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../Reveal'
-import dealershipPhoto from '../../assets/eg1/misc/dealership.webp'
+import dealershipPhoto from '../../assets/eg1/misc/dealership.png'
 
 export default function EG1WhereToBuy() {
   return (
     <section className="eg1-wtb">
       <div className="container">
         <Reveal as="div" className="eg1-wtb__card">
-          <img src={dealershipPhoto} alt="Loja Ellev" className="eg1-wtb__img" />
+          <img src={dealershipPhoto} alt="Loja Ellev URBAN" className="eg1-wtb__img" />
           <div className="eg1-wtb__overlay" />
           <div className="eg1-wtb__content">
             <Reveal as="h1" delay={150}>

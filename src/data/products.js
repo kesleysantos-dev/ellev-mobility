@@ -1,45 +1,45 @@
-import modelo01 from '../assets/products/modelo-01.png';
-import modelo02 from '../assets/products/modelo-02.png';
-import modelo03 from '../assets/products/modelo-03.png';
+import urbanPhoto from '../assets/categorias-produtos/linha urban/URBAN.PNG';
+import i5JoyPhoto from '../assets/categorias-produtos/linha urban/I5 JOY.PNG';
+import x13Photo from '../assets/categorias-produtos/linha-adventure/X13.PNG';
 
 export const products = [
   {
     id: 'modelo-01',
-    name: 'EG1',
-    tagline: 'Performance em duas rodas',
-    photo: modelo01,
-    link: '/eg1',
+    name: 'URBAN',
+    tagline: 'Agilidade elétrica para o seu dia a dia',
+    photo: urbanPhoto,
+    link: '/urban',
     specs: [
-      { label: 'Vel. Máxima', value: '100km/h' },
-      { label: 'Autonomia', value: 'até 130km' },
-      { label: '0-50km/h', value: '2.9 seg' },
+      { label: 'Vel. Máxima', value: '32km/h' },
+      { label: 'Autonomia', value: 'até 65km' },
+      { label: 'Carga Máxima', value: '150kg' },
     ],
-    cta: 'Explore a EG1',
+    cta: 'Explore a URBAN',
   },
   {
     id: 'modelo-03',
-    name: 'ES1',
-    tagline: 'Liberdade para o dia a dia',
-    photo: modelo03,
-    link: '/es1',
+    name: 'I5 JOY',
+    tagline: 'Leveza e praticidade em cada trajeto',
+    photo: i5JoyPhoto,
+    link: '/i5-joy',
     specs: [
       { label: 'Bateria', value: 'Íon-Lítio' },
       { label: 'Autonomia', value: 'até 60 km' },
-      { label: 'Documentação', value: 'sem CNH/Emplacamento' },
+      { label: 'Vel. Máxima', value: '32km/h' },
     ],
-    cta: 'Explore a ES1',
+    cta: 'Explore a I5 JOY',
   },
   {
     id: 'modelo-02',
-    name: 'VIBE',
-    tagline: 'Design vintage, tecnologia de ponta',
-    photo: modelo02,
-    link: '/vibe',
+    name: 'X13',
+    tagline: 'Estilo retrô, força elétrica',
+    photo: x13Photo,
+    link: '/x13',
     specs: [
-      { label: 'Vel. Máxima', value: '100km/h' },
-      { label: 'Autonomia', value: 'até 100km' },
-      { label: 'Motor', value: '9.000 W' },
+      { label: 'Vel. Máxima', value: '45km/h' },
+      { label: 'Autonomia', value: 'até 80km' },
+      { label: 'Carga Máxima', value: '180kg' },
     ],
-    cta: 'Explore a VIBE',
+    cta: 'Explore a X13',
   },
 ];

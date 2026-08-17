@@ -12,12 +12,12 @@ export default function VIBELifestyle() {
           </h2>
           <p>
             Com 02 anos de garantia, design moderno, tecnologia e toda a estrutura de pós-venda
-            da ELLEV, a VIBE é a escolha ideal para quem quer transformar o dia a dia urbano em
+            da ELLEV, a X13 é a escolha ideal para quem quer transformar o dia a dia urbano em
             uma experiência mais prática, acessível e confiável.
           </p>
         </Reveal>
       </div>
-      <Reveal as="img" src={lifestylePhoto} alt="Ellev VIBE no dia a dia" className="vibe-lifestyle__img" delay={150} />
+      <Reveal as="img" src={lifestylePhoto} alt="Ellev X13 no dia a dia" className="vibe-lifestyle__img" delay={150} />
     </section>
   )
 }

@@ -38,7 +38,7 @@ export default function Footer() {
           >
             Consórcio
           </a>
-          <Link to="/oficinas">Assistência</Link>
+          {/* Oficinas temporariamente desativada */}
           <Link to="/pos-venda">Pós-vendas</Link>
         </div>
 

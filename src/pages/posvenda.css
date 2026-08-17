@@ -150,6 +150,13 @@
   padding: 25px 40px;
 }
 
+/* Com a seção de Oficinas desativada, o último bloco da página passa a ser
+   esse (ou o de Manual/Garantia, dependendo do que estiver ativo) — sem
+   isso a página termina colada no footer escuro, sem respiro. */
+.pv-page > section:last-of-type {
+  padding-bottom: 100px;
+}
+
 .pv-split__card {
   display: grid;
   grid-template-columns: 1fr 1fr;

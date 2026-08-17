@@ -10,11 +10,11 @@ import img7 from '../../assets/vibe/carousel/07-bateria.webp'
 const SLIDES = [
   { img: img1, title: 'Amortecedor Traseiro Duplo' },
   { img: img2, title: 'Farol Full LED' },
-  { img: img3, title: 'Freio à Disco' },
-  { img: img4, title: 'Motor HUB de 1.000W' },
-  { img: img5, title: 'Painel Digital Colorido' },
+  { img: img3, title: 'Freio à Disco / Tambor' },
+  { img: img4, title: 'Motor de 1.000W' },
+  { img: img5, title: 'Painel Digital LCD' },
   { img: img6, title: 'Baú 25L (Opcional)' },
-  { img: img7, title: 'Bateria de Lítio Removível' },
+  { img: img7, title: 'Bateria Chumbo-Ácida Selada' },
 ]
 
 const COUNT = SLIDES.length
@@ -94,7 +94,7 @@ export default function VIBEFeatureCarousel() {
             ref={trackRef}
             tabIndex={0}
             role="region"
-            aria-label="Diferenciais da VIBE — use as setas do teclado para navegar"
+            aria-label="Diferenciais da X13 — use as setas do teclado para navegar"
           >
             {TRIPLE.map((s) => (
               <div

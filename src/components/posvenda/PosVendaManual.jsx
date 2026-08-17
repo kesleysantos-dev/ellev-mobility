@@ -17,14 +17,6 @@ export default function PosVendaManual() {
               segurança, garantias e dicas para aproveitar o máximo da sua moto. Transparência e
               praticidade para que você pilote com confiança todos os dias.
             </p>
-            <div className="pv-split__actions">
-              <a href="#" onClick={(e) => e.preventDefault()} className="btn btn--pill">
-                Manual EG1
-              </a>
-              <a href="#" onClick={(e) => e.preventDefault()} className="btn btn--pill">
-                Manual ES1
-              </a>
-            </div>
           </Reveal>
         </Reveal>
       </div>

@@ -1,7 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { products } from '../data/products';
+import { CATEGORY_PRODUCTS } from '../data/categoryProducts';
 import logo from '../assets/logo/logo-ellev-white.png';
+
+// "Destaques" mostra os 3 produtos atuais (com suas próprias páginas
+// completas, intocadas). As demais categorias vêm de categoryProducts.js —
+// cada produto delas abre a página simples em /moto/:id.
+const PRODUCT_CATEGORIES = [
+  { id: 'destaques', label: 'Destaques', products },
+  ...CATEGORY_PRODUCTS,
+];
 
 const NAV_LEFT = [
   { label: 'Onde estamos', to: '/concessionarias' },
@@ -9,7 +18,9 @@ const NAV_LEFT = [
 ];
 
 const NAV_RIGHT = [
-  { label: 'Oficinas', to: '/oficinas' },
+  // Oficinas temporariamente desativada — reative removendo este comentário
+  // e voltando a linha abaixo pro array.
+  // { label: 'Oficinas', to: '/oficinas' },
   { label: 'Pós-venda', to: '/pos-venda' },
   {
     label: 'Consórcio Ellev',
@@ -25,14 +36,21 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [headerVisible, setHeaderVisible] = useState(true);
+  const [activeCategory, setActiveCategory] = useState(PRODUCT_CATEGORIES[0].id);
 
   const openDropdown = () => {
     clearTimeout(closeTimer.current);
     setOpen(true);
   };
   const closeDropdown = () => {
-    closeTimer.current = setTimeout(() => setOpen(false), 150);
+    closeTimer.current = setTimeout(() => {
+      setOpen(false);
+      setActiveCategory(PRODUCT_CATEGORIES[0].id);
+    }, 150);
   };
+
+  const activeProducts =
+    PRODUCT_CATEGORIES.find((c) => c.id === activeCategory)?.products ?? [];
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -84,45 +102,81 @@ export default function Header() {
                 onMouseEnter={openDropdown}
                 onMouseLeave={closeDropdown}
               >
-                {products.map((p) =>
-                  p.link ? (
-                    <Link
-                      key={p.id}
-                      to={p.link}
-                      className="header__mega-item"
-                      onClick={() => {
-                        clearTimeout(closeTimer.current)
-                        setOpen(false)
-                      }}
+                <div className="header__mega-categories">
+                  {PRODUCT_CATEGORIES.map((cat) => (
+                    <button
+                      key={cat.id}
+                      type="button"
+                      className={`header__mega-category ${
+                        activeCategory === cat.id ? 'is-active' : ''
+                      }`}
+                      onMouseEnter={() => setActiveCategory(cat.id)}
+                      onFocus={() => setActiveCategory(cat.id)}
+                      onClick={() => setActiveCategory(cat.id)}
                     >
-                      <img
-                        src={p.photo}
-                        alt={p.name}
-                        className="header__mega-thumb"
-                      />
-                      <span className="header__mega-name">{p.name}</span>
-                      <span className="header__mega-sub">Moto elétrica</span>
-                    </Link>
+                      {cat.label}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="header__mega-products">
+                  {activeProducts.length > 0 ? (
+                    activeProducts.map((p) => {
+                      const content = (
+                        <>
+                          <img
+                            src={p.photo}
+                            alt={p.name}
+                            className="header__mega-thumb"
+                          />
+                          <span className="header__mega-name">{p.name}</span>
+                          <span className="header__mega-sub">Moto elétrica</span>
+                        </>
+                      )
+                      if (p.link) {
+                        return (
+                          <Link
+                            key={p.id}
+                            to={p.link}
+                            className="header__mega-item"
+                            onClick={() => {
+                              clearTimeout(closeTimer.current)
+                              setOpen(false)
+                            }}
+                          >
+                            {content}
+                          </Link>
+                        )
+                      }
+                      if (p.href) {
+                        return (
+                          <a
+                            key={p.id}
+                            href={p.href}
+                            className="header__mega-item"
+                            onClick={() => {
+                              clearTimeout(closeTimer.current)
+                              setOpen(false)
+                            }}
+                          >
+                            {content}
+                          </a>
+                        )
+                      }
+                      // Modelo ainda sem página própria — mostra só a imagem,
+                      // sem link fake pra lugar nenhum.
+                      return (
+                        <div key={p.id} className="header__mega-item">
+                          {content}
+                        </div>
+                      )
+                    })
                   ) : (
-                    <a
-                      key={p.id}
-                      href={`/#${p.id}`}
-                      className="header__mega-item"
-                      onClick={() => {
-                        clearTimeout(closeTimer.current)
-                        setOpen(false)
-                      }}
-                    >
-                      <img
-                        src={p.photo}
-                        alt={p.name}
-                        className="header__mega-thumb"
-                      />
-                      <span className="header__mega-name">{p.name}</span>
-                      <span className="header__mega-sub">Moto elétrica</span>
-                    </a>
-                  )
-                )}
+                    <p className="header__mega-empty">
+                      Em breve novos modelos nesta categoria.
+                    </p>
+                  )}
+                </div>
               </div>
             )}
           </div>

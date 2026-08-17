@@ -14,16 +14,16 @@ import img11 from '../../assets/es1/carousel/11-duas-baterias.webp'
 
 const SLIDES = [
   { img: img1, title: 'Espaço para Capacete' },
-  { img: img2, title: 'Acionamento via Cartão NFC' },
+  { img: img2, title: 'Acionamento Prático' },
   { img: img3, title: 'Porta Treco' },
   { img: img4, title: 'Gancho de Sacola' },
   { img: img5, title: 'Entrada USB' },
-  { img: img6, title: 'Painel LCD Colorido' },
+  { img: img6, title: 'Painel Digital' },
   { img: img7, title: 'Iluminação Full LED' },
   { img: img8, title: 'Freio Traseiro a Disco' },
   { img: img9, title: 'Freio Dianteiro a Disco' },
   { img: img10, title: 'Acabamento Premium' },
-  { img: img11, title: 'Duas Baterias Removíveis' },
+  { img: img11, title: 'Bateria de Lítio Removível' },
 ]
 
 const COUNT = SLIDES.length
@@ -97,7 +97,7 @@ export default function ES1FeatureCarousel() {
   return (
     <section className="es1-features">
       <div className="container">
-        <Reveal as="h2">Design vintage, tecnologia de ponta</Reveal>
+        <Reveal as="h2">Leveza e praticidade em cada detalhe</Reveal>
       </div>
 
       <div className="es1-features__track-wrap" onKeyDown={onKeyDown}>
@@ -106,7 +106,7 @@ export default function ES1FeatureCarousel() {
           ref={trackRef}
           tabIndex={0}
           role="region"
-          aria-label="Diferenciais da ES1 — use as setas do teclado para navegar"
+          aria-label="Diferenciais da I5 JOY — use as setas do teclado para navegar"
         >
           {TRIPLE.map((s) => (
             <div

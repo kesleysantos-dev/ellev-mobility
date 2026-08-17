@@ -12,6 +12,7 @@ import OficinasPage from './pages/OficinasPage'
 import PosVendaPage from './pages/PosVendaPage'
 import ComprarPage from './pages/ComprarPage'
 import ObrigadoPage from './pages/ObrigadoPage'
+import CategoryProductPage from './pages/CategoryProductPage'
 
 export default function App() {
   return (
@@ -20,15 +21,16 @@ export default function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/eg1" element={<EG1Page />} />
-          <Route path="/es1" element={<ES1Page />} />
-          <Route path="/vibe" element={<VIBEPage />} />
+          <Route path="/urban" element={<EG1Page />} />
+          <Route path="/i5-joy" element={<ES1Page />} />
+          <Route path="/x13" element={<VIBEPage />} />
           <Route path="/seja-um-concessionario" element={<SejaConcessionarioPage />} />
           <Route path="/concessionarias" element={<ConcessionariasPage />} />
           <Route path="/oficinas" element={<OficinasPage />} />
           <Route path="/pos-venda" element={<PosVendaPage />} />
           <Route path="/comprar" element={<ComprarPage />} />
           <Route path="/obrigado" element={<ObrigadoPage />} />
+          <Route path="/moto/:slug" element={<CategoryProductPage />} />
         </Routes>
       </main>
       <Footer />

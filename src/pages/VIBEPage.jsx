@@ -1,5 +1,4 @@
 import VIBEHero from '../components/vibe/VIBEHero'
-import VIBELifestyle from '../components/vibe/VIBELifestyle'
 import VIBEExplorer from '../components/vibe/VIBEExplorer'
 import VIBEFeatureCarousel from '../components/vibe/VIBEFeatureCarousel'
 import VIBEShared from '../components/vibe/VIBEShared'
@@ -13,7 +12,6 @@ export default function VIBEPage() {
   return (
     <div className="vibe-page">
       <VIBEHero />
-      <VIBELifestyle />
       <VIBEExplorer />
       <VIBEFeatureCarousel />
       <VIBEShared />

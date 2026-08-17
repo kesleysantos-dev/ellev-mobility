@@ -12,14 +12,14 @@ import img9 from '../../assets/eg1/carousel/09-freio-traseiro.webp'
 
 const SLIDES = [
   { img: img1, title: 'Iluminação Full LED' },
-  { img: img2, title: 'Rodas Aro 17’’' },
-  { img: img3, title: 'Suspensão Traseira Central' },
-  { img: img4, title: 'Painel TFT Colorido 5’’' },
-  { img: img5, title: 'Supensão Dianteira Invertida' },
-  { img: img6, title: 'Transmissão via Correia Dentada' },
-  { img: img7, title: '02 Baterias Removíveis' },
-  { img: img8, title: 'Acionamento via Cartão NFC' },
-  { img: img9, title: 'Freio Traseiro no Pé' },
+  { img: img2, title: 'Rodas Resistentes' },
+  { img: img3, title: 'Suspensão Hidráulica' },
+  { img: img4, title: 'Painel Digital de Fácil Leitura' },
+  { img: img5, title: 'Freios à Disco Hidráulicos' },
+  { img: img6, title: 'Motor de 1.000W' },
+  { img: img7, title: 'Bateria de Lítio Removível' },
+  { img: img8, title: 'Praticidade no Acionamento' },
+  { img: img9, title: 'Freios nas Duas Rodas' },
 ]
 
 const COUNT = SLIDES.length
@@ -103,7 +103,7 @@ export default function EG1FeatureCarousel() {
           ref={trackRef}
           tabIndex={0}
           role="region"
-          aria-label="Diferenciais da EG1 — use as setas do teclado para navegar"
+          aria-label="Diferenciais da URBAN — use as setas do teclado para navegar"
         >
           {TRIPLE.map((s) => (
             <div

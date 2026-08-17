@@ -71,6 +71,13 @@
   margin-bottom: 12px;
 }
 
+.vibe-hero__title {
+  font-size: clamp(48px, 8vw, 92px);
+  line-height: 1;
+  color: #fff;
+  margin: 0 0 12px;
+}
+
 .vibe-hero__row {
   display: flex;
   flex-wrap: wrap;
@@ -215,7 +222,6 @@
   gap: 12px;
   background: none;
   border: none;
-  cursor: pointer;
   padding: 0;
   color: var(--text-muted);
   font-size: 0.78rem;
@@ -244,13 +250,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  touch-action: pan-y;
-  cursor: grab;
   user-select: none;
-}
-
-.vibe-explorer__viewer:active {
-  cursor: grabbing;
 }
 
 .vibe-explorer__frame {

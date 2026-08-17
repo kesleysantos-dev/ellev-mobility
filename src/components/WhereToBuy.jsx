@@ -5,13 +5,16 @@ import oficina from '../assets/store/oficina.png'
 
 const CARDS = [
   { title: 'Onde\nComprar', to: '/concessionarias', photo: showroom },
-  { title: 'Nossas\nOficinas', to: '/oficinas', photo: oficina },
+  // Oficinas temporariamente desativada — reative voltando este card pro array.
+  // { title: 'Nossas\nOficinas', to: '/oficinas', photo: oficina },
 ]
 
 export default function WhereToBuy() {
   return (
     <section className="where-to-buy">
-      <div className="container where-to-buy__grid">
+      <div
+        className={`container where-to-buy__grid ${CARDS.length === 1 ? 'where-to-buy__grid--single' : ''}`}
+      >
         {CARDS.map((c) => (
           <Link key={c.title} to={c.to} className="photo-card">
             <img src={c.photo} alt="" className="photo-card__photo" />

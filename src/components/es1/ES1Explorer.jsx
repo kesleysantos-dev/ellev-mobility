@@ -1,111 +1,23 @@
-import { useEffect, useRef, useState } from 'react'
 import Reveal from '../Reveal'
-import icon360 from '../../assets/shared/icons/360icon.png'
-
-const blackModules = import.meta.glob('../../assets/es1/360/black/*.webp', { eager: true, import: 'default' })
-const blueModules = import.meta.glob('../../assets/es1/360/blue/*.webp', { eager: true, import: 'default' })
-const whiteModules = import.meta.glob('../../assets/es1/360/white/*.webp', { eager: true, import: 'default' })
-const greyModules = import.meta.glob('../../assets/es1/360/grey/*.webp', { eager: true, import: 'default' })
-
-function framesFrom(modules) {
-  return Object.keys(modules)
-    .sort()
-    .map((key) => modules[key])
-}
+import productPhoto from '../../assets/categorias-produtos/linha urban/I5 JOY.PNG'
 
 const COLORS = [
-  { id: 'black', label: 'Eclipse Black', dot: '#141414', frames: framesFrom(blackModules) },
-  { id: 'blue', label: 'Space Matte Blue', dot: '#2b3a52', frames: framesFrom(blueModules) },
-  { id: 'white', label: 'Lunar White', dot: '#e9e9e7', frames: framesFrom(whiteModules) },
-  { id: 'grey', label: 'Nebula Grey', dot: '#aeb2b8', frames: framesFrom(greyModules) },
+  { id: 'black', label: 'Eclipse Black', dot: '#141414' },
+  { id: 'blue', label: 'Space Matte Blue', dot: '#2b3a52' },
+  { id: 'white', label: 'Lunar White', dot: '#e9e9e7' },
+  { id: 'grey', label: 'Nebula Grey', dot: '#aeb2b8' },
 ]
 
 const SPECS = [
-  { label: 'Vel. Máx', value: '100km/h' },
-  { label: 'Autonomia', value: '100km*' },
-  { label: 'Potência Máx', value: '9.000 Watts' },
-  { label: 'Torque Máximo', value: '205 Nm' },
-  { label: 'Baterias', value: '2 baterias de 72v 24Ah' },
-  { label: 'Carregamento', value: '2h30 - 220V · 5h - 110V' },
+  { label: 'Vel. Máx', value: '32km/h' },
+  { label: 'Autonomia', value: '45 a 60km*' },
+  { label: 'Potência Máx', value: '1.000 Watts' },
+  { label: 'Capacidade de Escalada', value: 'até 25°' },
+  { label: 'Bateria Removível', value: '1 bateria de 60V 20Ah' },
+  { label: 'Carregamento', value: '5 a 6 horas' },
 ]
 
 export default function ES1Explorer() {
-  const [colorIndex, setColorIndex] = useState(0)
-  const [frameIndex, setFrameIndex] = useState(0)
-  const [isDragging, setIsDragging] = useState(false)
-  const dragRef = useRef(null)
-  const viewerRef = useRef(null)
-  const autoSpinRef = useRef(null)
-  const hasAutoSpunRef = useRef(false)
-
-  const color = COLORS[colorIndex]
-  const frames = color.frames
-  const frameCount = frames.length
-
-  useEffect(() => {
-    setFrameIndex(0)
-    frames.forEach((src) => {
-      const img = new Image()
-      img.src = src
-    })
-  }, [colorIndex])
-
-  // Ao entrar na viewport pela primeira vez, gira a moto 360° sozinha e
-  // para de volta no frame inicial — só uma vez, e cancela se o usuário
-  // já começar a arrastar manualmente.
-  useEffect(() => {
-    const el = viewerRef.current
-    if (!el || hasAutoSpunRef.current || !frameCount) return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting || hasAutoSpunRef.current) return
-        hasAutoSpunRef.current = true
-        observer.disconnect()
-
-        let i = 0
-        autoSpinRef.current = setInterval(() => {
-          i += 1
-          if (i >= frameCount) {
-            setFrameIndex(0)
-            clearInterval(autoSpinRef.current)
-            autoSpinRef.current = null
-            return
-          }
-          setFrameIndex(i)
-        }, 45)
-      },
-      { threshold: 0.4 },
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [frameCount])
-
-  const onPointerDown = (e) => {
-    if (autoSpinRef.current) {
-      clearInterval(autoSpinRef.current)
-      autoSpinRef.current = null
-    }
-    dragRef.current = { startX: e.clientX, startIndex: frameIndex }
-    setIsDragging(true)
-    e.currentTarget.setPointerCapture(e.pointerId)
-  }
-
-  const onPointerMove = (e) => {
-    if (!dragRef.current || !frameCount) return
-    const dx = e.clientX - dragRef.current.startX
-    const step = 6
-    const delta = Math.round(dx / step)
-    let next = (dragRef.current.startIndex + delta) % frameCount
-    if (next < 0) next += frameCount
-    setFrameIndex(next)
-  }
-
-  const onPointerUp = () => {
-    dragRef.current = null
-    setIsDragging(false)
-  }
-
   return (
     <section className="es1-explorer">
       <span className="es1-explorer__watermark" aria-hidden="true">
@@ -115,37 +27,16 @@ export default function ES1Explorer() {
       <div className="container">
         <Reveal as="div" className="es1-explorer__grid">
           <div className="es1-explorer__swatches">
-            {COLORS.map((c, i) => (
-              <button
-                key={c.id}
-                type="button"
-                className={`es1-explorer__swatch ${i === colorIndex ? 'is-active' : ''}`}
-                onClick={() => setColorIndex(i)}
-              >
+            {COLORS.map((c) => (
+              <span key={c.id} className="es1-explorer__swatch">
                 <span className="es1-explorer__dot" style={{ background: c.dot }} />
                 <span>{c.label.toUpperCase()}</span>
-              </button>
+              </span>
             ))}
           </div>
 
-          <div
-            ref={viewerRef}
-            className="es1-explorer__viewer"
-            onPointerDown={onPointerDown}
-            onPointerMove={onPointerMove}
-            onPointerUp={onPointerUp}
-            onPointerLeave={onPointerUp}
-          >
-            <img
-              src={frames[frameIndex]}
-              alt="ES1 em 360 graus"
-              className="es1-explorer__frame"
-              draggable={false}
-            />
-            <div className={`es1-explorer__hint ${isDragging ? 'is-hidden' : ''}`}>
-              <img src={icon360} alt="" className="es1-explorer__hint-badge" aria-hidden="true" />
-              <span className="es1-explorer__hint-label">arraste para girar</span>
-            </div>
+          <div className="es1-explorer__viewer">
+            <img src={productPhoto} alt="I5 JOY" className="es1-explorer__frame" draggable={false} />
           </div>
 
           <div className="es1-explorer__specs">

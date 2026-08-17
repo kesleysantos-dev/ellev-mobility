@@ -1,11 +1,11 @@
 import Reveal from '../Reveal'
-import bannerPhoto from '../../assets/es1/misc/banner-eletrica.jpg'
+import bannerPhoto from '../../assets/es1/misc/banner-eletrica.png'
 import ArrowLink from '../eg1/ArrowLink'
 
 export default function ES1ElectricBanner() {
   return (
     <section className="es1-electric">
-      <img src={bannerPhoto} alt="Ellev ES1 carregando" className="es1-electric__img" />
+      <img src={bannerPhoto} alt="Ellev I5 JOY carregando" className="es1-electric__img" />
       <div className="es1-electric__overlay" />
 
       <Reveal as="div" className="es1-electric__content" delay={300}>

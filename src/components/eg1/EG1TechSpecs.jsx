@@ -4,26 +4,13 @@ import sideImg from '../../assets/eg1/misc/accordion-side.webp'
 
 const ITEMS = [
   {
-    title: 'Chassi',
-    content: (
-      <>
-        <p>Chassi : Tipo berço duplo</p>
-        <p>Estrutura : Tubular</p>
-        <p>Material : Aço carbono</p>
-      </>
-    ),
-  },
-  {
     title: 'Bateria',
     content: (
       <>
-        <p>Quantidade : Uma</p>
-        <p>Tipo : Baterias de íons de lítio (Li-Ion)</p>
-        <p>Células : 21700 níquel-manganês-cobalto (NMC)</p>
-        <p>Tensão nominal : 72V</p>
-        <p>Configuração : 20S6P</p>
-        <p>Capacidades : 28,5Ah, 2052Wh</p>
-        <p>Massa : 12 (x2)</p>
+        <p>Capacidade da Bateria : 60V 24AH</p>
+        <p>Bateria : Lítio Removível</p>
+        <p>Autonomia : 65 km</p>
+        <p>Tempo de Recarga : 8 horas</p>
       </>
     ),
   },
@@ -31,42 +18,26 @@ const ITEMS = [
     title: 'Motor',
     content: (
       <>
-        <p>Motor elétrico : Central, de ímã permanente, arrefecido a ar</p>
-        <p>Potência Máxima : 10 KW</p>
-        <p>Potência Nominal : 5 KW</p>
-        <p>Torque máximo : 305 Nm</p>
+        <p>Potência : 1000W</p>
+        <p>Velocidade Máxima : 32 km/h</p>
+        <p>Capacidade de Escalada : 18°</p>
       </>
     ),
-  },
-  {
-    title: 'Transmissão',
-    content: <p>Transmissão : Polias e Carreira dentada</p>,
   },
   {
     title: 'Suspensão',
-    content: (
-      <>
-        <p>Dianteira : Garfo telescópio hidráulico / Curso: 120 mm</p>
-        <p>Traseira : Braço oscilante simétrico com monoamortecedor hidráulico (central) / Curso: 50 mm</p>
-      </>
-    ),
+    content: <p>Amortecimento : Hidráulico</p>,
   },
   {
     title: 'Sistemas de Freios',
-    content: (
-      <>
-        <p>Freios a disco : dianteiro/traseiro combinados (CBS)</p>
-        <p>Acionamento : Hidráulico, manete direita (freio dianteiro) e pedal direito (freio traseiro)</p>
-        <p>Discos de freio : Ø 290 mm (dianteiro) e Ø 220 (traseiro)</p>
-      </>
-    ),
+    content: <p>Freios : À disco hidráulicos</p>,
   },
   {
     title: 'Pneus e Rodas',
     content: (
       <>
-        <p>Dianteiro : 100/80-17</p>
-        <p>Traseiro: 130/70-17</p>
+        <p>Rodas : Pneus dianteira Aro 12 / traseira Aro 10</p>
+        <p>Calibragem : 36 psi</p>
       </>
     ),
   },
@@ -74,11 +45,9 @@ const ITEMS = [
     title: 'Dimensões',
     content: (
       <>
-        <p>Largura : 79cm</p>
-        <p>Comprimento : 197cm</p>
-        <p>Altura : 105cm</p>
-        <p>Peso : 111kg (com 2 baterias)</p>
-        <p>Carga máxima : 180kg</p>
+        <p>Peso : 78 kg</p>
+        <p>Carga máxima : 150 kg</p>
+        <p>Tamanho (C x L x A) : 178,5 cm x 107 cm x 75 cm</p>
       </>
     ),
   },
@@ -91,7 +60,7 @@ export default function EG1TechSpecs() {
         <Reveal as="h1">Especificações técnicas</Reveal>
         <div className="eg1-techspecs__grid">
           <Accordion items={ITEMS} />
-          <Reveal as="img" src={sideImg} alt="Ellev EG1" className="eg1-techspecs__img" />
+          <Reveal as="img" src={sideImg} alt="Ellev URBAN" className="eg1-techspecs__img" />
         </div>
       </div>
     </section>

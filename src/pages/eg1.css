@@ -191,7 +191,6 @@
   gap: 12px;
   background: none;
   border: none;
-  cursor: pointer;
   padding: 0;
   color: rgba(217, 226, 232, 0.65);
   font-size: 0.78rem;
@@ -220,13 +219,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  touch-action: pan-y;
-  cursor: grab;
   user-select: none;
-}
-
-.eg1-explorer__viewer:active {
-  cursor: grabbing;
 }
 
 .eg1-explorer__frame {
