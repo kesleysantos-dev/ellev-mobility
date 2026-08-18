@@ -45,12 +45,19 @@
   align-items: start;
 }
 
+.moto-techspecs__col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 /* .btn--primary é escuro sobre claro — nessa página o fundo já é escuro
    (mesma cor do botão), então precisa da própria versão clara aqui.
    Especificidade extra (.moto-page à frente) pra vencer .btn--primary
    independente da ordem em que o CSS é concatenado no build. */
 .moto-page .moto-techspecs__cta {
-  margin-top: 40px;
+  margin-top: 24px;
+  align-self: flex-start;
   background: #fff;
   border-color: #fff;
   color: var(--bg-dark);

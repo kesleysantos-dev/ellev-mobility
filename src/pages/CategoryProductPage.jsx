@@ -59,7 +59,18 @@ export default function CategoryProductPage() {
         <div className="container">
           <Reveal as="h1">Especificações técnicas</Reveal>
           <div className="moto-techspecs__grid">
-            <Accordion items={items} defaultOpen={-1} />
+            <div className="moto-techspecs__col">
+              <Accordion items={items} defaultOpen={-1} />
+              <Reveal
+                as="a"
+                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn--primary moto-techspecs__cta"
+              >
+                Saiba mais
+              </Reveal>
+            </div>
             <Reveal as="div" className="moto-techspecs__panel">
               <img
                 src={product.photo}
@@ -68,16 +79,6 @@ export default function CategoryProductPage() {
               />
             </Reveal>
           </div>
-
-          <Reveal
-            as="a"
-            href={`https://wa.me/${WHATSAPP_NUMBER}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn--primary moto-techspecs__cta"
-          >
-            Saiba mais
-          </Reveal>
         </div>
       </section>
     </div>

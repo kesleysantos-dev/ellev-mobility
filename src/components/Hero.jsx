@@ -1,4 +1,4 @@
-import heroVideo from '../assets/hero/video-hero.mp4'
+import heroVideo from '../assets/hero/hero-ellev.mp4'
 
 const HERO_VIDEO_SRC = heroVideo
 
