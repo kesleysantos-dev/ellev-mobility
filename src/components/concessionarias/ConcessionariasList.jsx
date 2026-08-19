@@ -52,7 +52,9 @@ export default function ConcessionariasList() {
                 </a>
               )}
               <a
-                href={`https://www.google.com/maps?q=${d.lat},%20${d.lng}`}
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                  d.mapAddress || `${d.address}, ${d.city} - ${d.state}`,
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="conc-card__map"

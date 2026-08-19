@@ -24,7 +24,7 @@ const NAV_RIGHT = [
   { label: 'Pós-venda', to: '/pos-venda' },
   {
     label: 'Consórcio Ellev',
-    href: 'https://parceria.klubi.com.br/consorcio/moto/leva',
+    href: 'https://wa.me/5500000000000',
     external: true,
   },
 ];

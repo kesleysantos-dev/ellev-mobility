@@ -809,6 +809,10 @@ a.product-section__label:hover {
   min-height: 100vh;
 }
 
+.battery .photo-panel__photo {
+  object-position: center 30%;
+}
+
 .photo-panel__overlay {
   position: absolute;
   inset: 0;
@@ -1416,8 +1420,7 @@ a.product-section__label:hover {
   background: var(--bg-alt);
 }
 
-.social__grid > *:nth-child(3),
-.social__grid > *:nth-child(5) {
+.social__grid > *:nth-child(3) {
   aspect-ratio: 3 / 4.85;
 }
 
@@ -1521,6 +1524,7 @@ a.product-section__label:hover {
 .social__post--map {
   background: var(--bg-soft-2);
   padding: 24px 10px;
+  aspect-ratio: 3 / 3.6;
 }
 
 .social__map {

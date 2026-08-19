@@ -92,8 +92,9 @@
 }
 
 .conc-list__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
 }
 
@@ -105,6 +106,7 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  flex: 0 1 calc((100% - 40px) / 3);
 }
 
 .conc-card__meta {
@@ -174,8 +176,8 @@
    Breakpoints alinhados aos tiers reais do site de referência: tablet em
    ≤1024px, mobile em ≤767px. */
 @media (max-width: 1024px) {
-  .conc-list__grid {
-    grid-template-columns: repeat(2, 1fr);
+  .conc-card {
+    flex-basis: calc((100% - 20px) / 2);
   }
 }
 
@@ -201,7 +203,7 @@
     flex: 1;
   }
 
-  .conc-list__grid {
-    grid-template-columns: 1fr;
+  .conc-card {
+    flex-basis: 100%;
   }
 }
