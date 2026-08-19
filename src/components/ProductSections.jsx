@@ -4,11 +4,16 @@ import { products } from '../data/products'
 import Reveal from './Reveal'
 
 const MAX_OFFSET = 140
+// Fração da largura da própria imagem usada como deslocamento máximo — em
+// telas estreitas 140px fixos empurravam a foto quase inteira pra fora da
+// viewport durante o efeito de entrada, então escalamos com o tamanho real
+// do elemento em vez de usar um valor fixo.
+const OFFSET_RATIO = 0.22
 
 function ProductPhoto({ name, src, reverse = false }) {
   const ref = useRef(null)
-  const startOffset = reverse ? -MAX_OFFSET : MAX_OFFSET
-  const [offset, setOffset] = useState(startOffset)
+  const sign = reverse ? -1 : 1
+  const [offset, setOffset] = useState(sign * MAX_OFFSET)
 
   useEffect(() => {
     const el = ref.current
@@ -18,6 +23,7 @@ function ProductPhoto({ name, src, reverse = false }) {
     const update = () => {
       const rect = el.getBoundingClientRect()
       const vh = window.innerHeight
+      const startOffset = sign * Math.min(MAX_OFFSET, el.offsetWidth * OFFSET_RATIO)
       const progress = Math.min(Math.max(1 - rect.top / vh, 0), 1)
       setOffset((1 - progress) * startOffset)
       ticking = false

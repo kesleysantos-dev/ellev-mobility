@@ -67,11 +67,11 @@ export default function Footer() {
 
         <div className="footer__col">
           <span className="footer__heading">Social</span>
-          <a href="#" aria-label="Instagram">
+          <a
+            href="https://www.instagram.com/ellevmobilitycearaa/"
+            aria-label="Instagram"
+          >
             Instagram
-          </a>
-          <a href="#" aria-label="YouTube">
-            YouTube
           </a>
         </div>
       </div>
