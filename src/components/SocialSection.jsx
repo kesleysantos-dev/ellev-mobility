@@ -19,7 +19,7 @@ export default function SocialSection() {
             delay={0}
           >
             <img src={studioDark} alt="Ellev X13" className="social__image" />
-            <span className="social__wordmark">X13</span>
+            <span className="social__wordmark"></span>
           </Reveal>
 
           <Reveal as="div" className="social__post" delay={60}>
@@ -61,8 +61,7 @@ export default function SocialSection() {
               className="social__image"
             />
             <span className="social__wordmark social__wordmark--stacked">
-              <small>Sua nova</small>
-              X13
+              <small></small>
             </span>
           </Reveal>
 

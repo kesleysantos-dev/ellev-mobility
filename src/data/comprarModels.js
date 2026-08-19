@@ -1,38 +1,15 @@
 export const MODELS = [
-  {
-    id: 'EG1',
-    nome: 'EG1',
-    preco: 28500,
-    corPadrao: 'preto',
-    cores: [
-      { label: 'Eclipse Black', value: 'preto', folder: 'black' },
-      { label: 'Orbital Grey', value: 'prata', folder: 'prata' },
-      { label: 'Midnight Matte Blue', value: 'azul-eg1', folder: 'azul' },
-    ],
-  },
-  {
-    id: 'ES1',
-    nome: 'ES1',
-    preco: 23500,
-    corPadrao: 'black',
-    cores: [
-      { label: 'Eclipse Black', value: 'black', folder: 'black' },
-      { label: 'Space Matte Blue', value: 'azul-es1', folder: 'blue' },
-      { label: 'Lunar White', value: 'branco', folder: 'white' },
-      { label: 'Nebula Grey', value: 'cinza', folder: 'grey' },
-    ],
-  },
-  {
-    id: 'VIBE',
-    nome: 'VIBE',
-    preco: 11900,
-    corPadrao: 'branco',
-    cores: [
-      { label: 'Lunar White', value: 'branco', folder: 'branca_encosto' },
-      { label: 'Eclipse Black', value: 'preto', folder: 'preta_encosto' },
-      { label: 'Orbital Grey', value: 'cinza', folder: 'cinza_encosto' },
-    ],
-  },
+  { id: 'urban', nome: 'URBAN' },
+  { id: 'i5-joy', nome: 'I5 JOY' },
+  { id: 'x13', nome: 'X13' },
+  { id: 'bizz', nome: 'BIZZ' },
+  { id: 'neo', nome: 'NEO' },
+  { id: 'x12', nome: 'X12' },
+  { id: 'aion-r', nome: 'AION R' },
+  { id: 'aion-s', nome: 'AION S' },
+  { id: 'cross-r', nome: 'CROSS R' },
+  { id: 'cross-s', nome: 'CROSS S' },
+  { id: 'ev3', nome: 'EV3' },
 ]
 
 export const ESTADOS = [

@@ -16,17 +16,21 @@
 .comprar__row {
   display: flex;
   align-items: stretch;
-  gap: 0;
+  width: 100%;
+  gap: 48px;
 }
 
 /* ---------- Form card ---------- */
 .comprar__card {
+  container-type: inline-size;
   width: 40%;
+  min-height: 640px;
   background: #fff;
   border-radius: 25px;
   padding: 48px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .comprar__nome {
@@ -34,23 +38,9 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0;
-  font-size: 5.6rem;
+  font-size: clamp(2.2rem, 13cqw, 5.6rem);
+  white-space: nowrap;
   color: var(--text);
-  margin-bottom: 6px;
-}
-
-.comprar__preco {
-  font-family: var(--font-body);
-  font-weight: 800;
-  font-size: 2.2rem;
-  color: var(--text);
-  margin-bottom: 6px;
-}
-
-.comprar__disclaimer {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  color: var(--text-muted);
   margin-bottom: 24px;
 }
 
@@ -119,15 +109,9 @@
   line-height: 1.6;
 }
 
-.comprar__fineprint {
-  margin-top: 20px;
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  color: var(--text-muted);
-}
-
 /* ---------- Viewer column ---------- */
 .comprar__viewer-col {
+  container-type: inline-size;
   width: 60%;
   position: relative;
   display: flex;
@@ -140,7 +124,7 @@
   position: absolute;
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: min(40vw, 320px);
+  font-size: clamp(3rem, 17cqw, 320px);
   top: -6px;
   color: #000;
   opacity: 0.04;
@@ -157,13 +141,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: grab;
-  touch-action: pan-y;
   user-select: none;
-}
-
-.comprar__viewer:active {
-  cursor: grabbing;
 }
 
 .comprar__frame {
@@ -172,29 +150,6 @@
   height: auto;
   pointer-events: none;
   -webkit-user-drag: none;
-}
-
-.comprar__hint {
-  position: absolute;
-  bottom: 8%;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 1;
-  transition: opacity 0.2s ease;
-}
-
-.comprar__hint.is-hidden {
-  opacity: 0;
-}
-
-.comprar__hint-label {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(0, 0, 0, 0.3);
-  padding: 6px 14px;
-  border-radius: 4px;
-  white-space: nowrap;
 }
 
 /* ---------- Responsive ----------

@@ -1,129 +1,58 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useState } from 'react'
 import Reveal from '../Reveal'
 import { MODELS, ESTADOS } from '../../data/comprarModels'
 
-const eg1Black = import.meta.glob('../../assets/eg1/360/black/*.webp', { eager: true, import: 'default' })
-const eg1Prata = import.meta.glob('../../assets/eg1/360/prata/*.webp', { eager: true, import: 'default' })
-const eg1Azul = import.meta.glob('../../assets/eg1/360/azul/*.webp', { eager: true, import: 'default' })
+import urbanPhoto from '../../assets/comprar/urban.PNG'
+import i5JoyPhoto from '../../assets/comprar/i5 joy.png'
+import x13Photo from '../../assets/comprar/x13.PNG'
+import bizzPhoto from '../../assets/comprar/bizz.PNG'
+import neoPhoto from '../../assets/comprar/neo.png'
+import x12Photo from '../../assets/comprar/x12.PNG'
+import aionRPhoto from '../../assets/comprar/aion r.PNG'
+import aionSPhoto from '../../assets/comprar/aion s.PNG'
+import crossRPhoto from '../../assets/comprar/cross r.png'
+import crossSPhoto from '../../assets/comprar/cross s.png'
+import ev3Photo from '../../assets/comprar/ev3.PNG'
 
-const es1Black = import.meta.glob('../../assets/es1/360/black/*.webp', { eager: true, import: 'default' })
-const es1Blue = import.meta.glob('../../assets/es1/360/blue/*.webp', { eager: true, import: 'default' })
-const es1White = import.meta.glob('../../assets/es1/360/white/*.webp', { eager: true, import: 'default' })
-const es1Grey = import.meta.glob('../../assets/es1/360/grey/*.webp', { eager: true, import: 'default' })
+// TODO: substituir pelo WhatsApp real da loja assim que for informado.
+const WHATSAPP_NUMBER = '5500000000000'
 
-const vibeBrancaEncosto = import.meta.glob('../../assets/vibe/360/branca_encosto/*.webp', { eager: true, import: 'default' })
-const vibePretaEncosto = import.meta.glob('../../assets/vibe/360/preta_encosto/*.webp', { eager: true, import: 'default' })
-const vibeCinzaEncosto = import.meta.glob('../../assets/vibe/360/cinza_encosto/*.webp', { eager: true, import: 'default' })
-
-const FRAME_SETS = {
-  'EG1/black': eg1Black,
-  'EG1/prata': eg1Prata,
-  'EG1/azul': eg1Azul,
-  'ES1/black': es1Black,
-  'ES1/blue': es1Blue,
-  'ES1/white': es1White,
-  'ES1/grey': es1Grey,
-  'VIBE/branca_encosto': vibeBrancaEncosto,
-  'VIBE/preta_encosto': vibePretaEncosto,
-  'VIBE/cinza_encosto': vibeCinzaEncosto,
+const PHOTOS = {
+  urban: urbanPhoto,
+  'i5-joy': i5JoyPhoto,
+  x13: x13Photo,
+  bizz: bizzPhoto,
+  neo: neoPhoto,
+  x12: x12Photo,
+  'aion-r': aionRPhoto,
+  'aion-s': aionSPhoto,
+  'cross-r': crossRPhoto,
+  'cross-s': crossSPhoto,
+  ev3: ev3Photo,
 }
-
-function framesFrom(modules) {
-  return Object.keys(modules)
-    .sort()
-    .map((key) => modules[key])
-}
-
-const formatPrice = (n) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
 export default function ComprarConfigurator() {
-  const [modeloId, setModeloId] = useState('EG1')
-  const [cor, setCor] = useState('preto')
-  const [frameIndex, setFrameIndex] = useState(0)
-  const [isDragging, setIsDragging] = useState(false)
+  const [modeloId, setModeloId] = useState('urban')
   const [sent, setSent] = useState(false)
-  const dragRef = useRef(null)
-  const autoSpinTimeoutRef = useRef(null)
-  const autoSpinIntervalRef = useRef(null)
-  const hasAutoSpunRef = useRef(false)
 
-  const modelo = MODELS.find((m) => m.id === modeloId)
-  const corAtual = modelo.cores.find((c) => c.value === cor) ?? modelo.cores[0]
-  const frames = useMemo(
-    () => framesFrom(FRAME_SETS[`${modeloId}/${corAtual.folder}`] ?? {}),
-    [modeloId, corAtual.folder],
-  )
-  const frameCount = frames.length
-  const frameCountRef = useRef(frameCount)
-  frameCountRef.current = frameCount
-
-  // Ao chegar na página, espera 2s e gira a moto 360° sozinha, parando de
-  // volta no frame inicial — só uma vez, mesmo padrão usado nas sections
-  // "Explore" das páginas de produto, mas disparado por tempo em vez de
-  // scroll (aqui o visualizador já está visível assim que a página carrega).
-  useEffect(() => {
-    autoSpinTimeoutRef.current = setTimeout(() => {
-      if (hasAutoSpunRef.current) return
-      hasAutoSpunRef.current = true
-      let i = 0
-      autoSpinIntervalRef.current = setInterval(() => {
-        i += 1
-        if (i >= frameCountRef.current) {
-          setFrameIndex(0)
-          clearInterval(autoSpinIntervalRef.current)
-          autoSpinIntervalRef.current = null
-          return
-        }
-        setFrameIndex(i)
-      }, 45)
-    }, 2000)
-    return () => {
-      clearTimeout(autoSpinTimeoutRef.current)
-      if (autoSpinIntervalRef.current) clearInterval(autoSpinIntervalRef.current)
-    }
-  }, [])
-
-  const onModeloChange = (id) => {
-    const next = MODELS.find((m) => m.id === id)
-    setModeloId(id)
-    setCor(next.corPadrao)
-    setFrameIndex(0)
-  }
-
-  const onCorChange = (value) => {
-    setCor(value)
-    setFrameIndex(0)
-  }
-
-  const onPointerDown = (e) => {
-    hasAutoSpunRef.current = true
-    clearTimeout(autoSpinTimeoutRef.current)
-    if (autoSpinIntervalRef.current) {
-      clearInterval(autoSpinIntervalRef.current)
-      autoSpinIntervalRef.current = null
-    }
-    dragRef.current = { startX: e.clientX, startIndex: frameIndex }
-    setIsDragging(true)
-    e.currentTarget.setPointerCapture(e.pointerId)
-  }
-
-  const onPointerMove = (e) => {
-    if (!dragRef.current || !frameCount) return
-    const dx = e.clientX - dragRef.current.startX
-    const step = 6
-    const delta = Math.round(dx / step)
-    let next = (dragRef.current.startIndex + delta) % frameCount
-    if (next < 0) next += frameCount
-    setFrameIndex(next)
-  }
-
-  const onPointerUp = () => {
-    dragRef.current = null
-    setIsDragging(false)
-  }
+  const modelo = MODELS.find((m) => m.id === modeloId) ?? { nome: 'Ellev' }
+  const foto = PHOTOS[modeloId]
 
   const onSubmit = (e) => {
     e.preventDefault()
+    const data = new FormData(e.target)
+
+    const linhas = [
+      'Quero economizar com a Ellev',
+      `Nome: ${data.get('nome')}`,
+      `Whatsapp: ${data.get('whatsapp')}`,
+      `Modelo: ${modelo.nome}`,
+      `Estado: ${data.get('estado')}`,
+      `Cidade: ${data.get('cidade')}`,
+    ]
+
+    const texto = encodeURIComponent(linhas.join('\n'))
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${texto}`, '_blank', 'noopener,noreferrer')
     setSent(true)
   }
 
@@ -132,10 +61,6 @@ export default function ComprarConfigurator() {
       <div className="container comprar__row">
         <Reveal as="div" className="comprar__card">
           <h1 className="comprar__nome">{modelo.nome}</h1>
-          <p className="comprar__preco">{formatPrice(modelo.preco)}</p>
-          <p className="comprar__disclaimer">
-            Preço com duas baterias, pode variar de acordo com a região.
-          </p>
           <hr className="comprar__divider" />
 
           {sent ? (
@@ -144,34 +69,24 @@ export default function ComprarConfigurator() {
             </p>
           ) : (
             <form className="comprar__form" onSubmit={onSubmit}>
-              <input type="text" placeholder="Nome Completo" required />
-              <input type="text" placeholder="Whatsapp" required />
+              <input type="text" name="nome" placeholder="Nome Completo" required />
+              <input type="text" name="whatsapp" placeholder="Whatsapp" required />
+
+              <select
+                name="modelo"
+                value={modeloId}
+                onChange={(e) => setModeloId(e.target.value)}
+                aria-label="Modelo desejado"
+              >
+                {MODELS.map((m) => (
+                  <option key={m.id} value={m.id}>
+                    {m.nome}
+                  </option>
+                ))}
+              </select>
 
               <div className="comprar__row2">
-                <select
-                  value={modeloId}
-                  onChange={(e) => onModeloChange(e.target.value)}
-                  aria-label="Modelo desejado"
-                >
-                  {MODELS.map((m) => (
-                    <option key={m.id} value={m.id}>
-                      {m.nome}
-                    </option>
-                  ))}
-                  <option value="indeciso">Não decidi</option>
-                </select>
-
-                <select value={cor} onChange={(e) => onCorChange(e.target.value)} aria-label="Cor">
-                  {modelo.cores.map((c) => (
-                    <option key={c.value} value={c.value}>
-                      {c.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="comprar__row2">
-                <select defaultValue="" required aria-label="Estado">
+                <select name="estado" defaultValue="" required aria-label="Estado">
                   <option value="" disabled>
                     Estado
                   </option>
@@ -181,7 +96,7 @@ export default function ComprarConfigurator() {
                     </option>
                   ))}
                 </select>
-                <input type="text" placeholder="Cidade" required />
+                <input type="text" name="cidade" placeholder="Cidade" required />
               </div>
 
               <button type="submit" className="comprar__submit">
@@ -189,32 +104,21 @@ export default function ComprarConfigurator() {
               </button>
             </form>
           )}
-
-          <p className="comprar__fineprint">** preço público sugerido</p>
         </Reveal>
 
         <div className="comprar__viewer-col">
           <span className="comprar__watermark" aria-hidden="true">
             {modelo.nome}
           </span>
-          <div
-            className="comprar__viewer"
-            onPointerDown={onPointerDown}
-            onPointerMove={onPointerMove}
-            onPointerUp={onPointerUp}
-            onPointerLeave={onPointerUp}
-          >
-            {frames[frameIndex] && (
+          <div className="comprar__viewer">
+            {foto && (
               <img
-                src={frames[frameIndex]}
-                alt={`${modelo.nome} em 360 graus`}
+                src={foto}
+                alt={modelo.nome}
                 className="comprar__frame"
                 draggable={false}
               />
             )}
-            <div className={`comprar__hint ${isDragging ? 'is-hidden' : ''}`}>
-              <span className="comprar__hint-label">arraste para girar</span>
-            </div>
           </div>
         </div>
       </div>
