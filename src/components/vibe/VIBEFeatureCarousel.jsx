@@ -1,23 +1,19 @@
-import { useEffect, useRef, useState } from 'react'
-import img1 from '../../assets/vibe/carousel/01-amortecedor.webp'
-import img2 from '../../assets/vibe/carousel/02-farol.webp'
-import img3 from '../../assets/vibe/carousel/03-freio-disco.webp'
-import img4 from '../../assets/vibe/carousel/04-motor-hub.webp'
-import img5 from '../../assets/vibe/carousel/05-painel.webp'
-import img6 from '../../assets/vibe/carousel/06-bau.webp'
-import img7 from '../../assets/vibe/carousel/07-bateria.webp'
+import { useEffect, useRef, useState } from 'react';
+import img1 from '../../assets/vibe/carousel/IMG_9402.PNG';
+import img2 from '../../assets/vibe/carousel/IMG_9403.PNG';
+import img3 from '../../assets/vibe/carousel/IMG_9404.PNG';
+import img4 from '../../assets/vibe/carousel/IMG_9408.PNG';
 
+// As três primeiras já trazem a legenda escrita na própria foto — não
+// duplicamos texto por cima delas.
 const SLIDES = [
-  { img: img1, title: 'Amortecedor Traseiro Duplo' },
-  { img: img2, title: 'Farol Full LED' },
-  { img: img3, title: 'Freio à Disco / Tambor' },
-  { img: img4, title: 'Motor de 1.000W' },
-  { img: img5, title: 'Painel Digital LCD' },
-  { img: img6, title: 'Baú 25L (Opcional)' },
-  { img: img7, title: 'Bateria Chumbo-Ácida Selada' },
-]
+  { img: img1, title: '' },
+  { img: img2, title: '' },
+  { img: img3, title: '' },
+  { img: img4, title: '' },
+];
 
-const COUNT = SLIDES.length
+const COUNT = SLIDES.length;
 
 // Três cópias em sequência: a do meio é a "real" (onde o carrossel fica em
 // repouso). Isso garante espaço de sobra pra rolar um passo além de
@@ -29,61 +25,61 @@ const TRIPLE = [
   ...SLIDES.map((s, i) => ({ ...s, key: `a-${i}` })),
   ...SLIDES.map((s, i) => ({ ...s, key: `b-${i}` })),
   ...SLIDES.map((s, i) => ({ ...s, key: `c-${i}` })),
-]
+];
 
 export default function VIBEFeatureCarousel() {
-  const trackRef = useRef(null)
-  const [pos, setPos] = useState(COUNT)
+  const trackRef = useRef(null);
+  const [pos, setPos] = useState(COUNT);
 
-  const active = ((pos % COUNT) + COUNT) % COUNT
+  const active = ((pos % COUNT) + COUNT) % COUNT;
 
   const scrollToPos = (index, behavior = 'smooth') => {
-    const track = trackRef.current
-    const card = track?.children[index]
-    if (!track || !card) return
-    track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior })
-  }
+    const track = trackRef.current;
+    const card = track?.children[index];
+    if (!track || !card) return;
+    track.scrollTo({ left: card.offsetLeft - track.offsetLeft, behavior });
+  };
 
   useEffect(() => {
-    scrollToPos(COUNT, 'auto')
-  }, [])
+    scrollToPos(COUNT, 'auto');
+  }, []);
 
   useEffect(() => {
-    const track = trackRef.current
-    if (!track) return
+    const track = trackRef.current;
+    if (!track) return;
     const onScrollEnd = () => {
       if (pos < COUNT) {
-        const recentered = pos + COUNT
-        setPos(recentered)
-        scrollToPos(recentered, 'auto')
+        const recentered = pos + COUNT;
+        setPos(recentered);
+        scrollToPos(recentered, 'auto');
       } else if (pos >= COUNT * 2) {
-        const recentered = pos - COUNT
-        setPos(recentered)
-        scrollToPos(recentered, 'auto')
+        const recentered = pos - COUNT;
+        setPos(recentered);
+        scrollToPos(recentered, 'auto');
       }
-    }
-    track.addEventListener('scrollend', onScrollEnd)
-    return () => track.removeEventListener('scrollend', onScrollEnd)
-  }, [pos])
+    };
+    track.addEventListener('scrollend', onScrollEnd);
+    return () => track.removeEventListener('scrollend', onScrollEnd);
+  }, [pos]);
 
   const goTo = (nextPos) => {
-    setPos(nextPos)
-    scrollToPos(nextPos)
-  }
+    setPos(nextPos);
+    scrollToPos(nextPos);
+  };
 
-  const next = () => goTo(pos + 1)
-  const prev = () => goTo(pos - 1)
-  const goToSlide = (i) => goTo(COUNT + i)
+  const next = () => goTo(pos + 1);
+  const prev = () => goTo(pos - 1);
+  const goToSlide = (i) => goTo(COUNT + i);
 
   const onKeyDown = (e) => {
     if (e.key === 'ArrowRight') {
-      e.preventDefault()
-      next()
+      e.preventDefault();
+      next();
     } else if (e.key === 'ArrowLeft') {
-      e.preventDefault()
-      prev()
+      e.preventDefault();
+      prev();
     }
-  }
+  };
 
   return (
     <section className="vibe-features">
@@ -107,15 +103,45 @@ export default function VIBEFeatureCarousel() {
             ))}
           </div>
 
-          <button className="vibe-features__arrow vibe-features__arrow--prev" onClick={prev} aria-label="Slide anterior">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M15 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
+          <button
+            className="vibe-features__arrow vibe-features__arrow--prev"
+            onClick={prev}
+            aria-label="Slide anterior"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                d="M15 6l-6 6 6 6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </button>
 
-          <button className="vibe-features__arrow vibe-features__arrow--next" onClick={next} aria-label="Próximo slide">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+          <button
+            className="vibe-features__arrow vibe-features__arrow--next"
+            onClick={next}
+            aria-label="Próximo slide"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                d="M9 6l6 6-6 6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </button>
         </div>
@@ -123,7 +149,7 @@ export default function VIBEFeatureCarousel() {
         <div className="vibe-features__dots">
           {SLIDES.map((s, i) => (
             <button
-              key={s.title}
+              key={i}
               className={`vibe-features__dot ${i === active ? 'is-active' : ''}`}
               onClick={() => goToSlide(i)}
               aria-label={`Ir para o slide ${i + 1}`}
@@ -132,5 +158,5 @@ export default function VIBEFeatureCarousel() {
         </div>
       </div>
     </section>
-  )
+  );
 }

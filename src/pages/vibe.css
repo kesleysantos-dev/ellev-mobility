@@ -345,7 +345,7 @@
 .vibe-features__card {
   position: relative;
   flex: 0 0 clamp(260px, 25vw, 360px);
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 3 / 4;
   border-radius: 10px;
   overflow: hidden;
   scroll-snap-align: start;

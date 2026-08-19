@@ -1,25 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import Reveal from '../Reveal'
-import img1 from '../../assets/eg1/carousel/01-iluminacao-led.webp'
-import img2 from '../../assets/eg1/carousel/02-aros-17.webp'
-import img3 from '../../assets/eg1/carousel/03-suspensao-traseira.webp'
-import img4 from '../../assets/eg1/carousel/04-painel-tft.webp'
-import img5 from '../../assets/eg1/carousel/05-suspensao-invertida.webp'
-import img6 from '../../assets/eg1/carousel/06-correia-dentada.webp'
-import img7 from '../../assets/eg1/carousel/07-baterias.webp'
-import img8 from '../../assets/eg1/carousel/08-cartao-nfc.webp'
-import img9 from '../../assets/eg1/carousel/09-freio-traseiro.webp'
+import img1 from '../../assets/eg1/carousel/IMG_9383.PNG'
+import img2 from '../../assets/eg1/carousel/IMG_9384.PNG'
+import img3 from '../../assets/eg1/carousel/IMG_9385.PNG'
+import img4 from '../../assets/eg1/carousel/IMG_9386.PNG'
 
 const SLIDES = [
-  { img: img1, title: 'Iluminação Full LED' },
-  { img: img2, title: 'Rodas Resistentes' },
-  { img: img3, title: 'Suspensão Hidráulica' },
-  { img: img4, title: 'Painel Digital de Fácil Leitura' },
-  { img: img5, title: 'Freios à Disco Hidráulicos' },
-  { img: img6, title: 'Motor de 1.000W' },
-  { img: img7, title: 'Bateria de Lítio Removível' },
-  { img: img8, title: 'Praticidade no Acionamento' },
-  { img: img9, title: 'Freios nas Duas Rodas' },
+  { img: img1, title: 'Visual Robusto e Completo' },
+  { img: img2, title: 'Freio a Disco Dianteiro' },
+  { img: img3, title: 'Suspensão Traseira Reforçada' },
+  { img: img4, title: 'Painel Digital com NFC' },
 ]
 
 const COUNT = SLIDES.length

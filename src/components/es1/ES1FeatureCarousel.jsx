@@ -1,29 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
 import Reveal from '../Reveal'
-import img1 from '../../assets/es1/carousel/01-espaco-capacete.webp'
-import img2 from '../../assets/es1/carousel/02-nfc.webp'
-import img3 from '../../assets/es1/carousel/03-porta-treco.webp'
-import img4 from '../../assets/es1/carousel/04-gancho-sacola.webp'
-import img5 from '../../assets/es1/carousel/05-usb.webp'
-import img6 from '../../assets/es1/carousel/06-painel-lcd.webp'
-import img7 from '../../assets/es1/carousel/07-iluminacao-led.webp'
-import img8 from '../../assets/es1/carousel/08-freio-traseiro.webp'
-import img9 from '../../assets/es1/carousel/09-freio-dianteiro.webp'
-import img10 from '../../assets/es1/carousel/10-acabamento-premium.webp'
-import img11 from '../../assets/es1/carousel/11-duas-baterias.webp'
+import img1 from '../../assets/es1/carousel/IMG_9392.PNG'
+import img2 from '../../assets/es1/carousel/IMG_9393.PNG'
+import img3 from '../../assets/es1/carousel/IMG_9394.PNG'
+import img4 from '../../assets/es1/carousel/IMG_9395.PNG'
+import img5 from '../../assets/es1/carousel/IMG_9396.PNG'
 
 const SLIDES = [
-  { img: img1, title: 'Espaço para Capacete' },
-  { img: img2, title: 'Acionamento Prático' },
-  { img: img3, title: 'Porta Treco' },
-  { img: img4, title: 'Gancho de Sacola' },
-  { img: img5, title: 'Entrada USB' },
-  { img: img6, title: 'Painel Digital' },
-  { img: img7, title: 'Iluminação Full LED' },
-  { img: img8, title: 'Freio Traseiro a Disco' },
-  { img: img9, title: 'Freio Dianteiro a Disco' },
-  { img: img10, title: 'Acabamento Premium' },
-  { img: img11, title: 'Bateria de Lítio Removível' },
+  { img: img1, title: 'Design Retrô Premium' },
+  { img: img2, title: 'Baú Traseiro Espaçoso' },
+  { img: img3, title: 'Farol Full LED' },
+  { img: img4, title: 'Painel Digital com NFC' },
+  { img: img5, title: 'Freio a Disco Dianteiro' },
 ]
 
 const COUNT = SLIDES.length
