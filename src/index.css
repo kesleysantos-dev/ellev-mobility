@@ -1734,6 +1734,12 @@ a.product-section__label:hover {
     border: none;
     cursor: pointer;
     font-family: inherit;
+    font-size: 1rem;
+    text-transform: none;
+    color: var(--text);
+    font-weight: 600;
+    padding: 8px 0;
+    margin-top: 0;
   }
 
   .header__mobile-categories {

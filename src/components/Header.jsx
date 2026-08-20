@@ -236,7 +236,13 @@ export default function Header() {
             type="button"
             className="header__mobile-heading header__mobile-heading--toggle"
             aria-expanded={mobileProductsOpen}
-            onClick={() => setMobileProductsOpen((v) => !v)}
+            onClick={() =>
+              setMobileProductsOpen((v) => {
+                const next = !v
+                if (next) setMobileActiveCategory(PRODUCT_CATEGORIES[0].id)
+                return next
+              })
+            }
           >
             Produtos
           </button>
