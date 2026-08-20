@@ -34,6 +34,8 @@ export default function Header() {
   const closeTimer = useRef(null);
   const [open, setOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [mobileActiveCategory, setMobileActiveCategory] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const [headerVisible, setHeaderVisible] = useState(true);
   const [activeCategory, setActiveCategory] = useState(PRODUCT_CATEGORIES[0].id);
@@ -230,27 +232,73 @@ export default function Header() {
         </button>
 
         <nav className={`header__mobile-nav ${menuOpen ? 'is-open' : ''}`}>
-          <span className="header__mobile-heading">Produtos</span>
-          {products.map((p) =>
-            p.link ? (
-              <Link
-                key={p.id}
-                to={p.link}
-                className="header__mobile-link"
-                onClick={() => setMenuOpen(false)}
-              >
-                {p.name}
-              </Link>
-            ) : (
-              <a
-                key={p.id}
-                href={`/#${p.id}`}
-                className="header__mobile-link"
-                onClick={() => setMenuOpen(false)}
-              >
-                {p.name}
-              </a>
-            )
+          <button
+            type="button"
+            className="header__mobile-heading header__mobile-heading--toggle"
+            aria-expanded={mobileProductsOpen}
+            onClick={() => setMobileProductsOpen((v) => !v)}
+          >
+            Produtos
+          </button>
+          {mobileProductsOpen && (
+            <div className="header__mobile-categories">
+              {PRODUCT_CATEGORIES.map((cat) => (
+                <div key={cat.id} className="header__mobile-category">
+                  <button
+                    type="button"
+                    className={`header__mobile-category-toggle ${
+                      mobileActiveCategory === cat.id ? 'is-active' : ''
+                    }`}
+                    aria-expanded={mobileActiveCategory === cat.id}
+                    onClick={() =>
+                      setMobileActiveCategory((c) => (c === cat.id ? null : cat.id))
+                    }
+                  >
+                    {cat.label}
+                  </button>
+                  {mobileActiveCategory === cat.id && (
+                    <div className="header__mobile-products">
+                      {cat.products.length > 0 ? (
+                        cat.products.map((p) =>
+                          p.link ? (
+                            <Link
+                              key={p.id}
+                              to={p.link}
+                              className="header__mobile-link"
+                              onClick={() => setMenuOpen(false)}
+                            >
+                              {p.name}
+                            </Link>
+                          ) : p.href ? (
+                            <a
+                              key={p.id}
+                              href={p.href}
+                              className="header__mobile-link"
+                              onClick={() => setMenuOpen(false)}
+                            >
+                              {p.name}
+                            </a>
+                          ) : (
+                            <a
+                              key={p.id}
+                              href={`/#${p.id}`}
+                              className="header__mobile-link"
+                              onClick={() => setMenuOpen(false)}
+                            >
+                              {p.name}
+                            </a>
+                          )
+                        )
+                      ) : (
+                        <p className="header__mobile-empty">
+                          Em breve novos modelos nesta categoria.
+                        </p>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           )}
           {[...NAV_LEFT, ...NAV_RIGHT].map((link) =>
             link.to ? (

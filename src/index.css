@@ -1372,6 +1372,7 @@ a.product-section__label:hover {
 
 .engineering__image {
   display: block;
+
   width: 100%;
   aspect-ratio: 4 / 3;
   border-radius: var(--radius);
@@ -1699,6 +1700,8 @@ a.product-section__label:hover {
     top: 68px;
     left: 0;
     right: 0;
+    max-height: calc(100dvh - 68px);
+    overflow-y: auto;
     background: #fff;
     padding: 20px 24px 28px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
@@ -1721,6 +1724,55 @@ a.product-section__label:hover {
     text-transform: uppercase;
     color: var(--text-muted);
     margin-top: 8px;
+  }
+
+  .header__mobile-heading--toggle {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .header__mobile-categories {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2px;
+    margin-bottom: 4px;
+  }
+
+  .header__mobile-category-toggle {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 0;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .header__mobile-category-toggle.is-active {
+    color: var(--accent-teal, var(--text));
+  }
+
+  .header__mobile-products {
+    display: flex;
+    flex-direction: column;
+    padding-left: 14px;
+    border-left: 2px solid var(--border);
+    margin-bottom: 4px;
+  }
+
+  .header__mobile-empty {
+    padding: 6px 0 6px 14px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
   }
 
   .header__mobile-link {
