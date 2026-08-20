@@ -14,8 +14,7 @@ import crossRPhoto from '../../assets/comprar/cross r.png'
 import crossSPhoto from '../../assets/comprar/cross s.png'
 import ev3Photo from '../../assets/comprar/ev3.PNG'
 
-// TODO: substituir pelo WhatsApp real da loja assim que for informado.
-const WHATSAPP_NUMBER = '5500000000000'
+const WHATSAPP_NUMBER = '5585992236123'
 
 const PHOTOS = {
   urban: urbanPhoto,

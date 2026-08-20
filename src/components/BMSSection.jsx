@@ -48,6 +48,16 @@ export default function BMSSection() {
     if (!list || !wrap || !media) return
 
     const computeLayout = () => {
+      // O efeito sticky (cards e mídia grudando juntos) só existe no
+      // layout de 2 colunas do desktop. Em telas ≤1024px tudo empilha em
+      // coluna única — sem isso, a altura calculada pra lista "vazava"
+      // pra caixa da imagem e deixava um vão enorme abaixo dela.
+      if (window.innerWidth <= 1024) {
+        list.style.height = ''
+        wrap.style.height = ''
+        return
+      }
+
       // Altura explícita: dentro de um grid, a caixa de contenção do
       // sticky é resolvida a partir do tamanho intrínseco (auto), o que
       // trava a posição dos cards do meio. Fixar a altura remove essa

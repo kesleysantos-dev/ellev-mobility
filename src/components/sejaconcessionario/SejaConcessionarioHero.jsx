@@ -33,8 +33,7 @@ const ESTADOS = [
   'TO',
 ];
 
-// TODO: substituir pelo WhatsApp real da loja assim que for informado.
-const WHATSAPP_NUMBER = '5500000000000';
+const WHATSAPP_NUMBER = '5585992236123';
 
 export default function SejaConcessionarioHero() {
   const navigate = useNavigate();

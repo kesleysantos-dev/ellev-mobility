@@ -239,12 +239,26 @@
    Breakpoints alinhados aos tiers reais do site de referência: tablet em
    ≤1024px, mobile em ≤767px. */
 @media (max-width: 1024px) {
-  .pv-split__card {
+  .pv-split__card,
+  .pv-split--reverse .pv-split__card {
     grid-template-columns: 1fr;
   }
 
   .pv-split__img {
     aspect-ratio: 16 / 9;
+  }
+
+  /* .pv-split--reverse tem a imagem depois do texto no DOM (pra inverter
+     a ordem das colunas no desktop) — em coluna única isso deixava o
+     texto em cima e a imagem embaixo, ao contrário do padrão usado nas
+     outras sections dessa página (imagem sempre primeiro). */
+  .pv-split--reverse .pv-split__img {
+    order: -1;
+  }
+
+  .pv-split--reverse .pv-split__card {
+    display: flex;
+    flex-direction: column;
   }
 }
 

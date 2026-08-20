@@ -1682,6 +1682,10 @@ a.product-section__label:hover {
     margin: 0 auto 0 0;
   }
 
+  .header__logo-img {
+    height: 48px;
+  }
+
   .header__burger {
     display: flex;
   }
@@ -1730,9 +1734,16 @@ a.product-section__label:hover {
   }
 
   .savings__grid,
-  .bms__grid,
   .engineering__intro {
     grid-template-columns: 1fr;
+  }
+
+  /* Troca pra flex em vez de grid de 1 coluna: com os itens sticky dentro
+     de .bms__list, o grid inflava a track da imagem pra mesma altura da
+     lista inteira (~1665px), deixando um vão enorme abaixo da foto. */
+  .bms__grid {
+    display: flex;
+    flex-direction: column;
   }
 
   /* Specs fixos em 340px cada (1020px no total) estouram a largura da
@@ -1800,7 +1811,7 @@ a.product-section__label:hover {
   }
 
   .product-section__watermark {
-    font-size: 149px;
+    font-size: 110px;
   }
 
   /* No site de referência a linha de specs nunca empilha — continua em

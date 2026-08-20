@@ -4,7 +4,7 @@ import Accordion from '../components/eg1/Accordion'
 import { CATEGORY_PRODUCT_MAP } from '../data/categoryProducts'
 import './categoryProduct.css'
 
-const WHATSAPP_NUMBER = '5500000000000'
+const WHATSAPP_NUMBER = '5585992236123'
 
 const SPEC_SECTIONS = [
   { title: 'Bateria', key: 'bateria' },

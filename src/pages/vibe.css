@@ -663,7 +663,8 @@
   }
 
   .vibe-techspecs__img {
-    max-height: 320px;
+    max-height: none;
+    height: auto;
   }
 }
 

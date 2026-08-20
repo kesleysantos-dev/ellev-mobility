@@ -24,7 +24,7 @@ const NAV_RIGHT = [
   { label: 'Pós-venda', to: '/pos-venda' },
   {
     label: 'Consórcio Ellev',
-    href: 'https://wa.me/5500000000000',
+    href: 'https://wa.me/5585992236123',
     external: true,
   },
 ];

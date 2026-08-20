@@ -734,7 +734,8 @@
   }
 
   .es1-techspecs__img {
-    max-height: 320px;
+    max-height: none;
+    height: auto;
   }
 
   .es1-gallery {

@@ -769,6 +769,17 @@
     align-items: center;
   }
 
+  .eg1-electric {
+    min-height: 520px;
+  }
+
+  /* A moto fica no terço esquerdo da foto, bem longe do centro — o corte
+     centralizado do object-fit:cover jogava ela pra fora do quadro em
+     telas estreitas. */
+  .eg1-electric__img {
+    object-position: 15% center;
+  }
+
   .eg1-electric__content {
     max-width: 100%;
     text-align: left;
@@ -800,7 +811,8 @@
   }
 
   .eg1-techspecs__img {
-    max-height: 320px;
+    max-height: none;
+    height: auto;
   }
 
   .eg1-gallery {
