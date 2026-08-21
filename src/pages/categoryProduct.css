@@ -48,7 +48,6 @@
 .moto-techspecs__col {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
 }
 
 /* .btn--primary é escuro sobre claro — nessa página o fundo já é escuro
@@ -76,6 +75,11 @@
   position: relative;
   border-radius: var(--radius);
   overflow: hidden;
+  /* height explícito (não só min/max) — sem isso o height:100% da foto não
+     tinha uma referência definida pra resolver e caía pro tamanho natural
+     da imagem, que em telas menores ficava maior que o painel e cortava
+     a moto (overflow:hidden escondia o excesso). */
+  height: 560px;
   min-height: 480px;
   max-height: 560px;
   display: flex;
@@ -146,6 +150,7 @@
 
   .moto-techspecs__panel {
     order: -1;
+    height: 360px;
     max-height: 360px;
   }
 }
@@ -156,6 +161,7 @@
   }
 
   .moto-techspecs__panel {
+    height: 300px;
     min-height: 280px;
     max-height: 300px;
   }
