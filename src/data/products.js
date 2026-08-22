@@ -19,7 +19,7 @@ export const products = [
   {
     id: 'modelo-03',
     name: 'I5 JOY',
-    tagline: 'Leveza e praticidade em cada trajeto',
+    tagline: 'Estilo retrô, força elétrica',
     photo: i5JoyPhoto,
     link: '/i5-joy',
     specs: [
@@ -32,7 +32,7 @@ export const products = [
   {
     id: 'modelo-02',
     name: 'X13',
-    tagline: 'Estilo retrô, força elétrica',
+    tagline: 'Leveza e praticidade em cada trajeto',
     photo: x13Photo,
     link: '/x13',
     specs: [
