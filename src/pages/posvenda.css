@@ -1,0 +1,302 @@
+/* ============ Pós-venda ============ */
+.pv-page {
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+.pv-page h1,
+.pv-page h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Hero ---------- */
+.pv-hero {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.pv-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pv-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.89) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.pv-hero__title {
+  position: relative;
+  z-index: 1;
+  font-size: 38px;
+  color: #fff;
+  margin: 0;
+}
+
+/* Precisa vencer a especificidade de `.pv-page h1` (que fixa Jost 400
+   em todos os h1/h2 da página). */
+.pv-page .pv-hero__title {
+  font-family: 'Montserrat', var(--font-display), sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+/* Reveal mais lento e vindo de mais baixo do que o padrão do site, só
+   para esse título — o delay de entrada fica a cargo do prop `delay` do
+   componente Reveal. */
+.pv-hero__title.reveal {
+  transform: translateY(52px);
+  transition:
+    opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pv-hero__title.reveal.is-visible {
+  transform: translateY(0);
+}
+
+/* ---------- Garantia (card full-bleed sobre gradiente) ---------- */
+.pv-garantia {
+  background: linear-gradient(180deg, #f2f2f2 0%, #d9e2e8 100%);
+  padding: 40px 40px 25px;
+}
+
+.pv-garantia__card {
+  position: relative;
+  width: 100%;
+  min-height: 550px;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 48px;
+}
+
+.pv-garantia__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pv-garantia__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.pv-garantia__overlay--strong {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.pv-garantia__content {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+}
+
+.pv-garantia__content h2 {
+  color: #d9e2e8;
+  font-size: 30px;
+  margin-bottom: 16px;
+  font-weight: 800;
+}
+
+.pv-garantia__content p {
+  font-family: var(--font-body);
+  color: #d9e2e8;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+/* Título, texto e link do card entram um de cada vez (título, depois
+   texto, depois link), devagar e vindo de baixo pra cima — a ordem/atraso
+   entre os três fica a cargo do prop `delay` de cada Reveal. */
+.pv-garantia__content h2.reveal,
+.pv-garantia__content p.reveal,
+.pv-garantia__content a.reveal {
+  transform: translateY(40px);
+  transition:
+    opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pv-garantia__content h2.reveal.is-visible,
+.pv-garantia__content p.reveal.is-visible,
+.pv-garantia__content a.reveal.is-visible {
+  transform: translateY(0);
+}
+
+/* ---------- Split pill cards (Manual / Revisão) ---------- */
+.pv-split {
+  background: #d9e2e8;
+  padding: 25px 40px;
+}
+
+/* Com a seção de Oficinas desativada, o último bloco da página passa a ser
+   esse (ou o de Manual/Garantia, dependendo do que estiver ativo) — sem
+   isso a página termina colada no footer escuro, sem respiro. */
+.pv-page > section:last-of-type {
+  padding-bottom: 100px;
+}
+
+.pv-split__card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 460px;
+  border-radius: 29px;
+  overflow: hidden;
+}
+
+.pv-split__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pv-split__text {
+  background: #fff;
+  padding: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pv-split__text h2 {
+  color: #1d1d1d;
+  font-size: 30px;
+  margin-bottom: 16px;
+}
+
+.pv-split__text p {
+  font-family: var(--font-body);
+  color: #1d1d1d;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.pv-split__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.pv-split__actions .btn {
+  background: #1d1d1d;
+  color: #fff;
+  border-color: #1d1d1d;
+}
+
+.pv-split__actions .btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* Texto entra devagar, vindo de baixo pra cima, com um atraso antes de
+   começar — o atraso em si fica a cargo do prop `delay` do Reveal. */
+.pv-split__text.reveal {
+  transform: translateY(46px);
+  transition:
+    opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pv-split__text.reveal.is-visible {
+  transform: translateY(0);
+}
+
+.pv-split--reverse .pv-split__card {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* ---------- Oficinas (fecha a página) ---------- */
+.pv-oficinas {
+  background: linear-gradient(180deg, #d9e2e8 0%, #fff 100%);
+  padding: 25px 40px 100px;
+}
+
+/* ---------- Responsive ----------
+   Breakpoints alinhados aos tiers reais do site de referência: tablet em
+   ≤1024px, mobile em ≤767px. */
+@media (max-width: 1024px) {
+  .pv-split__card,
+  .pv-split--reverse .pv-split__card {
+    grid-template-columns: 1fr;
+  }
+
+  .pv-split__img {
+    aspect-ratio: 16 / 9;
+  }
+
+  /* .pv-split--reverse tem a imagem depois do texto no DOM (pra inverter
+     a ordem das colunas no desktop) — em coluna única isso deixava o
+     texto em cima e a imagem embaixo, ao contrário do padrão usado nas
+     outras sections dessa página (imagem sempre primeiro). */
+  .pv-split--reverse .pv-split__img {
+    order: -1;
+  }
+
+  .pv-split--reverse .pv-split__card {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 767px) {
+  .pv-hero {
+    min-height: 250px;
+  }
+
+  .pv-hero__title {
+    font-size: 20px;
+  }
+
+  .pv-garantia,
+  .pv-split,
+  .pv-oficinas {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .pv-garantia__card {
+    min-height: 430px;
+    padding: 32px 24px;
+  }
+
+  .pv-garantia__overlay {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .pv-split__card {
+    border-radius: 20px;
+  }
+
+  .pv-split__img {
+    aspect-ratio: auto;
+    height: 140px;
+  }
+
+  .pv-split__text {
+    padding: 32px 24px;
+  }
+}
