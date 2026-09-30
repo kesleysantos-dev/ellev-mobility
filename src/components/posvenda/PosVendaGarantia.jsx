@@ -1,27 +1,20 @@
 import Reveal from '../Reveal'
-import photo from '../../assets/posvenda/posvenda-garantia.webp'
+import banner from '../../assets/posvenda/ellev-garantia.webp'
 
+// O banner já traz título, ícones e CTA na própria arte — por isso aqui não
+// tem overlay nem texto por cima, só a imagem inteira sem corte.
 export default function PosVendaGarantia() {
   return (
     <section className="pv-garantia">
       <div className="container">
-        <Reveal as="div" className="pv-garantia__card">
-          <img src={photo} alt="" className="pv-garantia__img" />
-          <div className="pv-garantia__overlay" />
-          <div className="pv-garantia__content">
-            <h2>02 Anos de Garantia Ellev</h2>
-            <p>
-              Na ELLEV, você conta com 2 anos de garantia nos principais componentes, como motor,
-              controlador e baterias. Cada item é projetado e testado para oferecer máxima
-              performance e durabilidade, com a confiança de uma marca que produz no Brasil e
-              garante suporte completo em todo o país.
-            </p>
-            <p>
-              Para manter sua garantia ativa, basta seguir o plano de revisões programadas e
-              realizar os serviços em nossa rede de oficinas autorizadas, sempre prontas para
-              cuidar da sua ELLEV.
-            </p>
-          </div>
+        <Reveal as="div" className="pv-garantia__card pv-garantia__card--banner">
+          <img
+            src={banner}
+            alt="02 anos de garantia ELLEV: 2 anos de garantia, rede de oficinas, suporte especializado e atendimento em todo o Brasil."
+            className="pv-garantia__banner"
+            width="1983"
+            height="793"
+          />
         </Reveal>
       </div>
     </section>

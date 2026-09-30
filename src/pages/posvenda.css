@@ -96,6 +96,20 @@
   object-fit: cover;
 }
 
+/* Variante banner: a arte já vem com o texto, então o card segue a
+   proporção da imagem (sem min-height, padding ou corte do object-fit). */
+.pv-garantia__card.pv-garantia__card--banner {
+  display: block;
+  min-height: 0;
+  padding: 0;
+}
+
+.pv-garantia__banner {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .pv-garantia__overlay {
   position: absolute;
   inset: 0;
